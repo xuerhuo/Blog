@@ -1,0 +1,98 @@
+.full {
+    width: 100%;
+    font-size: 14px;
+    height: 100%;
+}
+
+.header {
+    background-color: #212121;
+    color: #ddd;
+    height: 40px;
+    line-height: 100%;
+}
+
+.header li {
+    list-style: none;
+    line-height: 100%;
+}
+
+.header a, p {
+    display: inline-block;
+}
+
+.menu {
+    width: 16%;
+    height: 100%;
+    float: left;
+    background-color: #3D3D3D;
+    color: #FFFFFF;
+}
+
+.menu .menuf {
+    margin-top: 100px;
+}
+
+.menu .menus {
+    display: none;
+}
+
+.menu .menuf > li {
+    height: auto;
+    text-indent: 1.2ch;
+    cursor: pointer;
+    border-top: 1px solid #5C5C5C;
+}
+
+.menu .menuf > li > div:hover {
+    transition: background-color 0.7s;
+    background-color: #303030;
+}
+
+.menu .menuf > li > div {
+    padding: 12px 0;
+}
+
+.menu .menuf li div span {
+    padding-right: 1ch;
+}
+
+.menu .menuf > li > div > .icon {
+    float: right;
+    color: #BDBDBD;
+}
+
+.menu .menuf > li > .open {
+    background-color: #303030;
+    border-bottom: 1px solid #5C5C5C;
+}
+
+.menu .menuf > li > .opened {
+    transition: background-color 1s;
+    background-color: #E02222;
+}
+
+.menu .menuf .menus > li {
+    text-indent: 5ch;
+    padding: 2px 0;
+}
+
+.menu .menuf .menus > li a {
+    display: block;
+    padding: 6px 0;
+    color: #BDBDBD;
+}
+
+.menu .menuf .menus > li > a:hover {
+    background-color: #575757;
+    transition: background-color 0.7s;
+}
+
+.menu .menuf .menus .menusactive {
+    background-color: #575757;
+}
+
+section {
+    float: left;
+    width: 84%;
+    height: 100%;
+}

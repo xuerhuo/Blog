@@ -1,0 +1,43 @@
+.article_list li {
+    display: flex;
+    margin-top: 15px;
+    outline: 1px solid #bbbfb9;
+    padding: 10px;
+}
+
+.article_list li div {
+    text-align: center;
+    overflow-x: hidden;
+}
+
+.article_list li .article-id {
+    width: 40px;
+}
+
+.article_list li .article-author {
+    width: 60px;
+}
+
+.article_list li .article-title {
+    width: 200px;
+}
+
+.article_list li .article-content {
+    width: 320px;
+}
+
+.article_list li .article_cat {
+    width: 100px;
+}
+
+.article_list li .article_status {
+    width: 100px;
+}
+
+.article_list li .article_dateline {
+    width: 150px;
+}
+
+.article_list .article_manage {
+    width: 80px;
+}

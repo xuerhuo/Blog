@@ -1,0 +1,66 @@
+.content {
+    margin-top: 27px;
+    outline: 1px solid #eeeeee;
+}
+
+.content .title {
+    height: 37px;
+    background-color: #aaaaaa;
+    color: #ffffff;
+    line-height: 37px;
+    text-indent: 10px;
+
+}
+
+.content .title h4 {
+    display: inline-block;
+}
+
+.content .top {
+    margin: 10px 0 0 10px;
+}
+
+.content .top a {
+    padding: 0 15px;
+    height: 37px;
+    background-color: #35aa47;
+    color: #ffffff;
+    display: inline-block;
+    line-height: 37px;
+}
+
+.content .top .search {
+    display: inline-block;
+    float: right;
+    margin-right: 10px;
+}
+
+.content .top .search p {
+    display: inline;
+}
+
+.content .top .search input {
+    border: 1px solid #e5e5e5;
+    height: 33px;
+    width: 220px;
+    margin: 0 10px;
+}
+
+.content .top .search .btn {
+    height: 33px;
+    line-height: 33px;
+    text-align: center;
+    color: #ffffff;
+    background-color: #d8d8d8;
+    width: 74px;
+    display: inline-block;
+    border: none;
+}
+
+.content .user-data {
+    margin: 20px 10px 0 10px;
+}
+
+.content .user-data table {
+    width: 100%;
+}

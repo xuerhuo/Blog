@@ -1,0 +1,110 @@
+.wrap {
+    margin-top: 20px;
+    border: 1px solid #b4cef8;
+}
+
+.wrap .title {
+    background-color: #4b8df8 !important;
+    color: #FFFFFF;
+    height: 38px;
+    line-height: 38px;
+    box-sizing: border-box;
+    padding: 0 20px;
+}
+
+.wrap .title h3 {
+    font-weight: bold;
+    display: inline-block;
+}
+
+.wrap .title .c-menu {
+    height: 100%;
+    float: right;
+}
+
+.wrap .title .c-menu a {
+    margin: 3px;
+    height: 100%;
+    display: inline-block;
+    box-sizing: border-box;
+    padding: 0 10px;
+    cursor: hand;
+}
+
+.wrap .title .c-menu a:hover {
+    background-color: #FFFFFF;
+    color: #555555;
+}
+
+.wrap .title .selected {
+    background-color: #FFFFFF;
+    color: #555555;
+}
+
+.wrap .c-ment-content .row_my {
+    margin-top: 10px;
+    padding: 10px 0;
+}
+
+.wrap .c-ment-content .row_my .lable {
+    display: inline-block;
+    width: 15%;
+    text-align: right;
+    color: #000;
+    float: left;
+    margin-top: 7px;
+}
+
+.wrap .c-ment-content .row_my .fill-elemt {
+    display: inline-block;
+    width: 80%;
+    margin-right: 3%;
+}
+
+.wrap .c-ment-content .row_my input {
+    min-height: 30px;
+    border: 1px solid #e5e5e5;
+    min-width: 35%;
+    padding: 5px;
+}
+
+.wrap .c-ment-content .row_my #editor {
+    max-width: 100%;
+    min-height: 500px;
+}
+
+.wrap .c-ment-content .row_my input:focus {
+    border: 1px solid #4e4e4e;
+}
+
+.wrap .c-ment-content .row_my .fill-elemt textarea {
+    min-height: 100px;
+    min-width: 35%;
+}
+
+.wrap .c-menu-addsetting {
+    display: none;
+}
+
+.wrap .bottom {
+    margin-top: 30px;
+    background-color: #F5F5F5;
+    border-top: 1px solid #eee;
+}
+
+.wrap .bottom .sub {
+    padding: 20px;
+    text-align: center;
+}
+
+.wrap .bottom .sub button {
+    background-color: #4B8DF8;
+    color: #ffffff;
+    padding: 5px 10px;
+    border: none;
+    margin-right: 10px;
+}
+
+.wrap .bottom .sub button span {
+    margin-right: 12px;
+}

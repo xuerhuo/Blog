@@ -1,0 +1,139 @@
+body {
+    height: 100%;
+    width: 100%;
+    background-color: #e6e6e6;
+    padding: 30px 0 0 0;
+}
+
+#wrap {
+    width: 1000px;
+    margin: 0 auto;
+    background-color: #ffffff;
+    outline: 1px solid #ccc;
+    box-shadow: 0 2px 6px rgba(100, 100, 100, 0.3);
+    padding: 0 30px;
+}
+
+#wrap #head {
+    height: auto;
+    margin-bottom: 30px;
+}
+
+#wrap #head h2 {
+    display: inline-block;
+    margin-top: 30px;
+    font-size: 24px;
+    font-weight: bold;
+    color: #515151;
+}
+
+#wrap #head p {
+    margin: 15px 3ch 0 0;
+    color: #616161;
+    font-size: 13px;
+}
+
+#wrap #head ul {
+    list-style: none;
+    display: flex;
+    border-bottom: 1px solid #EDEDED;
+    border-top: 1px solid #EDEDED;
+    margin-top: 30px;
+}
+
+#wrap #head ul li {
+    margin-left: 25px;
+    font-size: 13px;
+    color: #6A6A6A;
+    padding: 13px 5px;
+}
+
+#wrap #head ul li:hover {
+    color: #414141;
+    text-shadow: #000000 5px;
+}
+
+#content {
+    height: auto;
+    width: 700px;
+    display: inline-block;
+    color: #6A6A6A;
+    font-size: 13px;
+}
+
+#content .title {
+    font-size: 26px;
+    color: #444;
+    margin-left: 18px;
+    font-weight: bold;
+}
+
+#content #article_content {
+    font-size: 14px;
+    line-height: 24px;
+    color: #444;
+    margin-top: 30px;
+    width: 627px;
+    border-bottom: double #eee 4px;
+}
+
+#content #article_content pre {
+    white-space: pre-wrap;
+}
+
+#content #article_content .content_des {
+    padding: 30px 0;
+    color: #9d9d9d;
+    font-size: 13px;
+}
+
+#content .around-article {
+    margin-top: 30px;
+    padding: 5px;
+    width: 627px;
+}
+
+#content .around-article .pre {
+    float: left;
+}
+
+#content .around-article .next {
+    float: right;
+}
+
+#content #comment form {
+    width: 100%;
+}
+
+#content #comment input {
+    height: 40px;
+    width: 100%;
+    margin-top: 15px;
+    border: 1px solid #dddddd;
+}
+
+#content #comment textarea[name=coment_content] {
+    height: 120px;
+    width: 100%;
+    margin-top: 15px;
+    border: 1px solid #dddddd;
+}
+
+#content #comment button {
+    margin-top: 20px;
+    height: 30px;
+    width: 60px;
+    border-radius: 4px;
+    background-color: #777;
+    color: #FFFFFF;
+    border: none;
+    float: right;
+}
+
+#nav {
+    height: 1000px;
+    width: 280px;
+    display: inline-block;
+    float: right;
+    color: #6A6A6A;
+}

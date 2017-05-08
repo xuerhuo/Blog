@@ -1,0 +1,134 @@
+.wrap {
+    display: flex;
+    margin-top: 30px;
+}
+
+.wrap .post_box {
+    flex: 1;
+    border: 1px solid #DDDDDD;
+}
+
+.wrap .post_box .title {
+    background-color: #4B8DF8;
+    width: 100%;
+    color: #ffffff;
+}
+
+.wrap .post_box .title h2 {
+    font-size: 18px !important;
+    padding: 10px 0;
+    margin: 0;
+}
+
+.wrap .post_box .title h2 span {
+    margin: 0 15px;
+}
+
+.wrap .post_box .row_my {
+    width: 100%;
+    height: 40px;
+    line-height: 40px;
+    margin-top: 15px;
+}
+
+.wrap .post_box .row_my label {
+    width: 15%;
+    text-align: right;
+    font-weight: normal;
+    margin-right: 3%;
+}
+
+.wrap .post_box .row_my input {
+    height: 30px;
+    border: 1px solid #eee;
+    width: 75%;
+}
+
+.wrap .post_box .row_my select {
+    height: 30px;
+    border: 1px solid #eee;
+    width: 75%;
+}
+
+.wrap .bottom {
+    margin-top: 30px;
+    background-color: #F5F5F5;
+    border-top: 1px solid #eee;
+}
+
+.wrap .bottom .sub {
+    padding: 20px;
+    text-align: center;
+}
+
+.wrap .bottom .sub button {
+    background-color: #4B8DF8;
+    color: #ffffff;
+    padding: 5px 10px;
+    border: none;
+    margin-right: 10px;
+}
+
+.wrap .bottom .sub button span {
+    margin-right: 12px;
+}
+
+.wrap .cats_display {
+    flex: 1;
+    border: 1px solid #eee;
+    margin-left: 5%;
+}
+
+.wrap .cats_display .title {
+    background-color: #35AA47;
+    width: 100%;
+    color: #ffffff;
+}
+
+.wrap .cats_display .title h2 {
+    font-size: 18px !important;
+    padding: 10px 0;
+    margin: 0;
+}
+
+.wrap .cats_display .title h2 span {
+    margin: 0 15px;
+}
+
+.wrap .cats_display ul li {
+    display: flex;
+    padding: 10px 0;
+}
+
+.wrap .cats_display ul li:hover {
+    background-color: #F9F9F9;
+}
+
+.wrap .cats_display ul li:first-child {
+    font-weight: bold;
+}
+
+.wrap .cats_display ul li:nth-child(2n) {
+    background-color: #F9F9F9;
+}
+
+.wrap .cats_display ul li .item {
+    flex: 1;
+    text-align: center;
+}
+
+.wrap .cats_display ul li .cat_name {
+    flex: 3;
+}
+
+.wrap .cats_display ul li .parent_id {
+    flex: 3;
+}
+
+.wrap .cats_display ul li .edit {
+    flex: 2;
+}
+
+.wrap .cats_display ul li .edit a {
+    color: #9d9d9d;
+}

@@ -1,0 +1,40 @@
+.article_item {
+    margin-top: 15px;
+    padding: 10px;
+}
+
+.article_item form > div {
+    width: 100%;
+    height: 40px;
+    vertical-align: middle;
+}
+
+.article_item > div > label {
+    width: 5%;
+    text-align: left;
+    height: 100%;
+}
+
+.article_item .content {
+    vertical-align: middle;
+}
+
+.article_item #content {
+    width: 80%;
+    height: 400px;
+    display: inline-block;
+}
+
+.article_item > div > input {
+    width: 80%;
+    height: 100%;
+}
+
+.article_item .content {
+    height: 400px;
+}
+
+.article_item textarea {
+    width: 80%;
+    height: 100%;
+}
