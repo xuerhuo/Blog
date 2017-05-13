@@ -9,6 +9,7 @@
     <?= import('reset.css') ?>
     <?= import('common.css') ?>
     <?= import('common.js') ?>
+    <?= import('home_article_view.css') ?>
     <?= import('jquery-2.1.0.js') ?>
     <script src="<?php echo DATA_LIB ?>editor/editormd.js"></script>
     <script src="<?php echo DATA_LIB ?>editor/lib/marked.min.js"></script>
