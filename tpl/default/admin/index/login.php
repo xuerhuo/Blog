@@ -2,6 +2,7 @@
 <head>
     <meta charset="UTF-8">
     <title>后台登陆</title>
+    <base href="<?php echo $G['config']['common']['basehref'] ?>">
     <?= import('bootstrap.min.css') ?>
     <?= import('admin_login.css') ?>
     <?= import('jquery.min.js') ?>

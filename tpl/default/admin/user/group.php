@@ -1,5 +1,6 @@
 <html>
 <head>
+    <base href="<?php echo $G['config']['common']['basehref'] ?>">
     <?php echo import('reset.css') ?>
     <?php echo import('admin_base.css') ?>
     <?php echo import('jquery.min.js') ?>

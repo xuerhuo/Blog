@@ -2,6 +2,7 @@
 <head>
     <meta charset="utf-8">
     <title>管理面板 你好,<?= $C['Admin']->nickname ?></title>
+    <base href="<?php echo $G['config']['common']['basehref'] ?>">
     <?= import('bootstrap.css') ?>
     <?= import('jquery-2.1.0.js') ?>
     <?= import('bootstrap.min.js') ?>

@@ -1,5 +1,6 @@
 <html>
 <head>
+    <base href="<?php echo $G['config']['common']['basehref'] ?>">
     <?= import('reset.css') ?>
     <?= import('admin_base.css') ?>
 </head>
