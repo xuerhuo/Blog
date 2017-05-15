@@ -10,6 +10,7 @@ define('DATA_FILE', DIRECTORY_SEPARATOR . str_replace(WEBROOT, '', ROOT . 'data'
 
 
 header("Content-Type:text/html;charset=utf-8");
+header("X-Powered-By:Erhuo.org");
 
 
 if (!empty($G['get']['param']['ajax'])) {

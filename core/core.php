@@ -50,7 +50,11 @@ if (file_exists($controller)) {
     msg('找不到对应的文件', 'home/index/index');
 }
 
-require_once $C['app']->initView($G['route']['redirect']['view']);
+$G['system']['viewfile'] = $C['app']->initView($G['route']['redirect']['view']);
+if (file_exists($G['system']['viewfile'])) {
+    require_once $G['system']['viewfile'];
+}
+
 
 //    require_once $C['app']->initController();
 //    require_once $C['app']->initView($G['route']['redirect']['view']);
