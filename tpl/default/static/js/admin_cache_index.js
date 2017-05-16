@@ -10,12 +10,29 @@ function flushqcloud() {
             var data = JSON.parse(xmlhttp.responseText);
             if (data.status == true) {
                 alert("获取文件列表完毕");
-                filelist = data.data[0];
+                filelist = data.data;
+                updateqcloudfile(filelist);
             }
         }
     });
-    console.log(filelist);
-    for (var x in filelist) {
-        console.log(x);
+}
+function updateqcloudfile(filelist) {
+    var updatefile_api = site_url + 'admin/cache/api/ajax/1';
+    for (var x = 0; x < 10; x++) {
+
+        var data = syncpost(updatefile_api, objToUrl({
+            'method': 'updatefile',
+            'cache-type': 'qcloud',
+            'file': filelist[x]
+        }), function (xmlhttp) {
+            displaylog(xmlhttp, x, filelist.length);
+        });
     }
+}
+function displaylog(info, now, all) {
+    var data = JSON.parse(info.responseText);
+    var textarea = document.querySelector(".information");
+    var innertext = textarea.value;
+    console.info(innertext, data.message);
+    textarea.value = innertext + "\n第" + now + "/" + all + "个" + data.message;
 }

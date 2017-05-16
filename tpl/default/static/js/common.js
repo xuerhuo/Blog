@@ -38,6 +38,26 @@ function post(url, param, callback) {
     xmlhttp.send(param);
     xmlhttp.onreadystatechange = callback;//发送事件后，收到信息了调用函数
 }
+function syncpost(url, param, callback) {
+    if (window.XMLHttpRequest) {
+        xmlhttp = new XMLHttpRequest();
+    } else {
+        xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+    }
+    if (xmlhttp == null) {
+        alert("xmlhttp init error")
+        return;
+    }
+    if (url.indexOf("?") > -1) {
+        url = url + "&" + Math.random();
+    } else {
+        url = url + "?" + Math.random();
+    }
+    xmlhttp.open("POST", url, false);
+    xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    xmlhttp.send(param);
+    callback(xmlhttp);
+}
 function objToUrl(param) {
     var url = "";
     for (var name in param) {

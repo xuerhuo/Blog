@@ -13,8 +13,19 @@ if ($G['post']['cache-type'] == 'qcloud') {
         }
     }
     if ($G['post']['method'] == 'getfile') {
-        json_output(array('status' => true, 'data' => array($upfiles)));
+        json_output(array('status' => true, 'data' => $upfiles));
     }
-
+    if ($G['post']['method'] == 'updatefile') {
+        $ret = array('status' => false);
+        $file = $G['post']['file'];
+        if (!file_exists($file) || !in_array($file, $upfiles)) {
+            $ret['status'] = false;
+            $ret['message'] = "文件不存在";
+        } elseif (1) {
+            $ret['status'] = false;
+            $ret['message'] = "文件" . $file . "更新成功";
+        }
+        json_output($ret);
+    }
 }
 ?>
