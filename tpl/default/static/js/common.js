@@ -1,7 +1,7 @@
 /**
  * Created by erhuo on 2017/2/17.
  */
-
+var site_url = 'http://erhuo.org/';
 function addEvent(id, event, funcName) {
     var elements = document.querySelectorAll(id);
     if (elements.length > 0) {

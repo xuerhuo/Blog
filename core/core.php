@@ -47,7 +47,7 @@ $controller = $C['app']->initController();
 if (file_exists($controller)) {
     require_once $controller;
 } else {
-    msg('找不到对应的文件', 'home/index/index');
+    msg('找不到对应的controller文件', 'home/index/index');
 }
 
 $G['system']['viewfile'] = $C['app']->initView($G['route']['redirect']['view']);

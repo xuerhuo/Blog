@@ -1,17 +1,30 @@
 <?php
 
 namespace Cms\common;
+require 'qcloudcos/include.php';
+use qcloudcos\Cosapi;
+
 class Storage implements StorageInterface
 {
+    public $bucket;
+    private $regin;
 
-    public function __construct()
+    public function __construct($args)
     {
-        echo 'hello';
+        global $G;
+        $this->regin = $args['regin'];
+        $this->bucket = $args['bucket'];
+        Cosapi::setRegion($this->regin);
     }
 
     function upload($srcPath, $dstPath)
     {
-
+        echo $srcPath;
+        if (!file_exists($srcPath)) {
+            $srcPath = WEBROOT . $srcPath;
+        }
+        echo $srcPath;
+        return Cosapi::upload($this->bucket, $srcPath, $dstPath);
     }
 
     function createFolder($bucket, $folder, $bizAttr = null)

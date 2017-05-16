@@ -9,7 +9,7 @@
 namespace Cms\common;
 interface StorageInterface
 {
-    function __construct();
+    // function __construct($args);
 
     function upload($srcPath, $dstPath);
 
