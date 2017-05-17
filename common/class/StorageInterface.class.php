@@ -25,11 +25,11 @@ interface StorageInterface
 
     function delFolder();
 
-    function update();
+    function update($filepath);
 
-    function stat();
+    function stat($filepath);
 
-    function delFile();
+    function delFile($dstfile);
 
     function uploadFile();
 }

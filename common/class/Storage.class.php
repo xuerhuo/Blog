@@ -17,14 +17,15 @@ class Storage implements StorageInterface
         Cosapi::setRegion($this->regin);
     }
 
-    function upload($srcPath, $dstPath)
+    function upload($srcPath, $dstPath = null)
     {
-        echo $srcPath;
         if (!file_exists($srcPath)) {
             $srcPath = WEBROOT . $srcPath;
         }
-        echo $srcPath;
-        return Cosapi::upload($this->bucket, $srcPath, $dstPath);
+        if ($dstPath == null) {
+            $dstPath = str_replace(WEBROOT, '', '/' . $srcPath);
+        }
+        return Cosapi::upload($this->bucket, $srcPath, $dstPath, null, null, 2);
     }
 
     function createFolder($bucket, $folder, $bizAttr = null)
@@ -57,19 +58,20 @@ class Storage implements StorageInterface
         // TODO: Implement delFolder() method.
     }
 
-    function update()
+    function update($filepath)
     {
-        // TODO: Implement update() method.
+        return Cosapi::update($this->bucket, str_replace(WEBROOT, '', '\\' . $filepath));
     }
 
-    function stat()
+    function stat($filepath)
     {
-        // TODO: Implement stat() method.
+        return Cosapi::stat($this->bucket, str_replace(WEBROOT, '', '/' . $filepath));
     }
 
-    function delFile()
+    function delFile($dstfile)
     {
-        // TODO: Implement delFile() method.
+        $dstfile = str_replace(WEBROOT, '/', $dstfile);
+        return Cosapi::delFile($this->bucket, $dstfile);
     }
 
     function uploadFile()

@@ -38,6 +38,32 @@ function post(url, param, callback) {
     xmlhttp.send(param);
     xmlhttp.onreadystatechange = callback;//发送事件后，收到信息了调用函数
 }
+function ansypost(url, param, callback) {
+    var xmlhttp;
+    if (window.XMLHttpRequest) {
+// code for IE7+, Firefox, Chrome, Opera, Safari
+        xmlhttp = new XMLHttpRequest();
+    } else {// code for IE6, IE5
+        xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+    }
+    if (xmlhttp == null) {
+        alert("xmlhttp init error")
+        return;
+    }
+    if (url.indexOf("?") > -1) {
+        url = url + "&" + Math.random();
+    } else {
+        url = url + "?" + Math.random();
+    }
+    xmlhttp.open("POST", url, true);
+    xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    xmlhttp.send(param);
+    xmlhttp.onreadystatechange = function () {
+        if (xmlhttp.readyState == 4) {
+            callback(xmlhttp.responseText);
+        }
+    };//发送事件后，收到信息了调用函数
+}
 function syncpost(url, param, callback) {
     if (window.XMLHttpRequest) {
         xmlhttp = new XMLHttpRequest();

@@ -5,6 +5,7 @@
     <?= import('admin_base.css') ?>
     <?= import('common.js') ?>
     <?= import('admin_cache_index.js') ?>
+    <?= import('admin_cache_index.css') ?>
 </head>
 <body>
 <header>
@@ -16,7 +17,7 @@
         <a href="<?= U('admin/index/main') ?>">主页</a>><a>主页</a>><a>主页</a>
     </nav>
 </header>
-<div id="coontent">
+<div id="content">
     <textarea class="information">
 
     </textarea>

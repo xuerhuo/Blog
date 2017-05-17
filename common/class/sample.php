@@ -4,10 +4,10 @@ require('./include.php');
 
 use qcloudcos\Cosapi;
 
-$bucket = 'testbucket';
+$bucket = 'erhuoorg';
 $src = './111.txt';
 $dst = '/testfolder/111.txt';
-$folder = '/testfolder';
+$folder = '/tpl';
 
 Cosapi::setTimeout(180);
 

@@ -17,22 +17,21 @@ function flushqcloud() {
     });
 }
 function updateqcloudfile(filelist) {
-    var updatefile_api = site_url + 'admin/cache/api/ajax/1';
-    for (var x = 0; x < 10; x++) {
-
-        var data = syncpost(updatefile_api, objToUrl({
+    updatefile_api = site_url + 'admin/cache/api/ajax/1';
+    for (x = 0; x < filelist.length; x++) {
+        var data = ansypost(updatefile_api, objToUrl({
             'method': 'updatefile',
             'cache-type': 'qcloud',
             'file': filelist[x]
-        }), function (xmlhttp) {
-            displaylog(xmlhttp, x, filelist.length);
-        });
+        }), (function (responsetext) {
+            var data = JSON.parse(responsetext);
+            displaylog(data.message, data.num, filelist.length);
+        }));
     }
 }
 function displaylog(info, now, all) {
-    var data = JSON.parse(info.responseText);
     var textarea = document.querySelector(".information");
     var innertext = textarea.value;
-    console.info(innertext, data.message);
-    textarea.value = innertext + "\n第" + now + "/" + all + "个" + data.message;
+    textarea.value = "第" + now + "/" + all + "个" + info + "\n" + innertext;
+    return true;
 }
