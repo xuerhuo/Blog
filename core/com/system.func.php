@@ -126,12 +126,19 @@ if (!function_exists('import')) {
         if ($G['config']['app']['debug']) {
             $debug = '?' . time();
         }
-        switch (get_extension($str)) {
+        $ext = get_extension($str);
+        if (strpos($str, '/') >= 0 && file_exists(ROOT . $str)) {
+            $prefix = '';
+        } else {
+            $css_prefix = RES . 'css' . DIRECTORY_SEPARATOR;
+            $js_prefix = RES . 'js' . DIRECTORY_SEPARATOR;
+        }
+        switch ($ext) {
             case 'css':
-                $return = '<link rel="stylesheet" type="text/css" href="' . RES . 'css' . DIRECTORY_SEPARATOR . $str . $debug . '">' . "\r\n";
+                $return = '<link rel="stylesheet" type="text/css" href="' . $css_prefix . $str . $debug . '">' . "\r\n";
                 break;
             case 'js':
-                $return = '<script src="' . RES . 'js' . DIRECTORY_SEPARATOR . $str . $debug . '"></script>' . "\r\n";
+                $return = '<script src="' . $js_prefix . $str . $debug . '"></script>' . "\r\n";
                 break;
         }
         return $return;
@@ -158,4 +165,19 @@ function json_output($param, $type = 'json')
     $G['system']['json_output'] = $param;
 }
 
+if (!function_exists('add_tpl_static')) {
+    /**
+     * @param $static_name 要添加的静态文件的名称
+     */
+    function add_tpl_static($static_name)
+    {
+        global $G;
+        $ext = get_extension($static_name);
+        if (file_exists(TPL . 'static' . DIRECTORY_SEPARATOR . $ext . DIRECTORY_SEPARATOR . $static_name)) {
+            array_append($G['tpl']['static'], $static_name);
+        } elseif (file_exists(ROOT . $static_name)) {
+            array_append($G['tpl']['static'], $static_name);
+        }
+    }
+}
 ?>

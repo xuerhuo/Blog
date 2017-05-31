@@ -15,7 +15,7 @@ jQuery(function () {
             tpl: tpl,
             sect: sect
         };
-        var url = 'http://www.hechuancheng.com/admin/set/curdmodel/ajax/1';
+        var url = site_url + 'admin/set/curdmodel/ajax/1';
         $.ajax({
             type: "POST",
             url: url,
@@ -54,7 +54,7 @@ jQuery(function () {
             data_table: data_table,
             field: field
         };
-        var url = 'http://www.hechuancheng.com/admin/set/setting/method/addsetting/ajax/1';
+        var url = site_url + 'admin/set/setting/method/addsetting/ajax/1';
         $.ajax({
             type: "POST",
             url: url,

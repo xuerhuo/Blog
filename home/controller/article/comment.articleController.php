@@ -1,7 +1,7 @@
 <?php
 if (!empty($G['post'])) {
     if ($G['post']['method'] == "add") {
-        $status = T('comments')->add(array(
+        $status = T('common_comments')->add(array(
             'type' => addslashes($G['post']['type']),
             'index_id' => addslashes($G['post']['id']),
             'comment_name' => addslashes($G['post']['comment_name']),

@@ -1,43 +1,16 @@
-<!doctype html>
-<html lang="zh-cn">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>许繁'blog</title>
-    <base href="<?php echo $G['config']['common']['basehref'] ?>">
-    <?= import('reset.css') ?>
-    <?= import('common.css') ?>
-    <?= import('common.js') ?>
-    <?= import('home_article_view.css') ?>
-    <?= import('jquery-2.1.0.js') ?>
-    <script src="<?php echo DATA_LIB ?>editor/editormd.js"></script>
-    <script src="<?php echo DATA_LIB ?>editor/lib/marked.min.js"></script>
-    <script src="<?php echo DATA_LIB ?>editor/lib/prettify.min.js"></script>
-    <script src="<?php echo DATA_LIB ?>editor/lib/raphael.min.js"></script>
-    <script src="<?php echo DATA_LIB ?>editor/lib/underscore.min.js"></script>
-    <script src="<?php echo DATA_LIB ?>editor/lib/sequence-diagram.min.js"></script>
-    <script src="<?php echo DATA_LIB ?>editor/lib/flowchart.min.js"></script>
-    <script src="<?php echo DATA_LIB ?>editor/lib/jquery.flowchart.min.js"></script>
-    <script src="<?php echo DATA_LIB ?>editor/editormd.js"></script>
-
-    <link rel="stylesheet" href="<?php echo DATA_LIB ?>editor/css/editormd.preview.css"/>
-    <?= import('home_article_view.js') ?>
-</head>
-<body>
-<div id="wrap">
-    <div id="head">
-        <h2><a href="<?= $G['config']['app']['siteurl'] ?>">许繁'blog</a></h2>
-        <p>承载我的青春</p>
-        <ul class="nav-menu">
-            <li><a href="<?= $G['config']['app']['siteurl'] ?>">首页</a></li>
-            <li>首页</li>
-            <li>首页</li>
-            <li>首页</li>
-            <li>首页</li>
-        </ul>
-    </div>
+<?php
+add_tpl_static('jquery-2.1.0.js');
+add_tpl_static(DATA_LIB . 'editor/lib/marked.min.js');
+add_tpl_static(DATA_LIB . 'editor/lib/prettify.min.js');
+add_tpl_static(DATA_LIB . 'editor/lib/raphael.min.js');
+add_tpl_static(DATA_LIB . 'editor/lib/underscore.min.js');
+add_tpl_static(DATA_LIB . 'editor/lib/sequence-diagram.min.js');
+add_tpl_static(DATA_LIB . 'editor/lib/flowchart.min.js');
+add_tpl_static(DATA_LIB . 'editor/lib/jquery.flowchart.min.js');
+add_tpl_static(DATA_LIB . 'editor/editormd.js');
+add_tpl_static(DATA_LIB . 'editor/css/editormd.preview.css');
+?>
+<?php include TPL . 'include' . DIRECTORY_SEPARATOR . 'common_header.php' ?>
     <div id="content">
         <h3 class="title"><?= $article['title'] ?></h3>
         <div id="article_content">

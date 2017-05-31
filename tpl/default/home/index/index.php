@@ -1,27 +1,4 @@
-<!doctype html>
-<html lang="zh-cn">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title><?php echo $G['config']['common']['site_title'] ?></title>
-    <base href="<?php echo $G['config']['common']['basehref'] ?>">
-    <?= import('reset.css') ?>
-    <?= import('common.css') ?>
-    <?= import('home_index_index.css') ?>
-</head>
-<body>
-<div id="wrap">
-    <div id="head">
-        <h2><a href="<?= $G['config']['app']['siteurl'] ?>"><?php echo $G['config']['common']['site_title'] ?></a></h2>
-        <p>承载我的青春</p>
-        <ul class="nav-menu">
-            <?php foreach ($index_menu as $menu): ?>
-                <li><a href="<?php echo U($menu['menu_mod']); ?>"><?php echo $menu['menu_name'] ?></a></li>
-            <?php endforeach; ?>
-        </ul>
-    </div>
+<?php include TPL . 'include' . DIRECTORY_SEPARATOR . 'common_header.php' ?>
     <div id="content">
         <ul class="article_list">
             <?php foreach ($lists as $list): ?>
@@ -58,8 +35,5 @@
         <strong><a style="color: #333333; text-decoration: underline;" href="http://www.inzhuo.cn/">卓的云</a></strong>
         <strong><a style="color: #333333; text-decoration: underline;" href="http://deepon.cn">Deep'blog</a></strong>
     </div>
-    <div class="cl"></div>
-</div>
 
-</body>
-</html>
+<?php include TPL . 'include' . DIRECTORY_SEPARATOR . 'common_footer.php' ?>
