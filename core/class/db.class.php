@@ -105,7 +105,7 @@ class db
         self::$running = $parse;
         try {
             $res = $C['cache']->get($parse);
-            if (!$res) {
+            if ($res === false) {
                 $res = self::$pdo->query($parse, \PDO::FETCH_ASSOC);
                 if ($res)
                     $res = $res->fetchall();

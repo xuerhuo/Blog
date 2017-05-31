@@ -12,6 +12,10 @@ class FileCache
 
     public function set($key, $value, $exp)
     {
+        global $G;
+        if ($G['config']['app']['cache_enable'] != true) {
+            return false;
+        }
         $oldkey = $key;
         $key = sha1($key);
         $data = array(
@@ -27,6 +31,10 @@ class FileCache
 
     public function get($key)
     {
+        global $G;
+        if ($G['config']['app']['cache_enable'] != true) {
+            return false;
+        }
         $key = sha1($key);
         $file = $this->cachefiledir . $key;
         if (file_exists($file)) {

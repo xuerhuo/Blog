@@ -5,6 +5,7 @@ class menuModel extends \Cms\core\Model
 {
     function getMenuByType($type)
     {
+
         function getMenusTree($type, $parent_id = 0, $level = 0, $all = false)
         {
             $top_menus = T('menus')->getMenusByParent($type, $parent_id, $all);
@@ -14,7 +15,6 @@ class menuModel extends \Cms\core\Model
             }
             return $top_menus;
         }
-
         function getMenusTreeL($type, &$data = array(), $trees = array(), $parent_id = 0, $all = false)
         {
             if (!$trees)
@@ -35,7 +35,7 @@ class menuModel extends \Cms\core\Model
                 $res[] = $dat;
             }
         }
-        unset($res[0]);
+        // unset($res[0]);
         return $res;
     }
 
