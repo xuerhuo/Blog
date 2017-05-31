@@ -5,5 +5,5 @@ $config['siteurl'] = 'http://erhuo.org/';
 $config['debug'] = true;
 $config['allow_upload_type'] = array('jpg', 'jpeg', 'gif', 'bmp', 'psd', 'png', 'apk', 'rar', 'css', 'txt', 'gz', 'tar');
 $config['error_level'] = 0;
-$config['cache_enable'] = false;
+$config['cache_enable'] = true;
 ?>

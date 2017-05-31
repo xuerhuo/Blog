@@ -33,4 +33,20 @@ if (!function_exists('getMenuTreeL')) {
         return $data;
     }
 }
+if (!function_exists('check_cache_file')) {
+    function check_cache_file($filelist)
+    {
+        global $C;
+        $upfiles = array();
+        $cache_hash = $C['cache']->get('file_cache_hash');
+        if (!$cache_hash) {
+            return $filelist;
+        }
+        foreach ($filelist as $file) {
+            if (sha1($file) != $cache_hash[$file])
+                array_append($upfiles, $file);
+        }
+        return $upfiles;
+    }
+}
 ?>
