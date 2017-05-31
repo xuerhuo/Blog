@@ -16,6 +16,7 @@ if (!empty($G['get']['param']['ajax'])) {
     display('json_output.php');
 
 }
+$C['cache'] = new \Cms\common\FileCache();
 $G['config']['common'] = M('Cms\admin\setting')->getConfig();
 
 ?>

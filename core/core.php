@@ -33,7 +33,6 @@ $driver->checkurl($G);
 // $driver->loadsysclass('db');
 db::init($G['config']['db']);
 
-
 //初始化基础环境
 if (file_exists(ROOT . 'common' . DIRECTORY_SEPARATOR . 'init.php'))
     require_once ROOT . 'common' . DIRECTORY_SEPARATOR . 'init.php';

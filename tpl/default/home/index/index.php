@@ -55,11 +55,10 @@
         </strong>
         <strong><a style="color: #333333; text-decoration: underline;" href="http://www.w0ai1uo.org">w0ai1ou'blog</a>
         </strong>
-        <strong><a style="color: #333333; text-decoration: underline;" href="http://www.hailairen.com">hailairen</a>
+        <strong><a style="color: #333333; text-decoration: underline;" href="http://www.sakill.com">SAKILL的博客</a>
         </strong>
-        <strong><a style="color: #333333; text-decoration: underline;" href="http://www.sakill.com">流沙的博客</a> </strong>
         <strong><a style="color: #333333; text-decoration: underline;" href="http://www.inzhuo.cn/">卓的云</a></strong>
-        <strong><a style="color: #333333; text-decoration: underline;" href="http://speach.cc/blog/">商院之声</a></strong>
+        <strong><a style="color: #333333; text-decoration: underline;" href="http://deepon.cn">Deep'blog</a></strong>
     </div>
     <div class="cl"></div>
 </div>

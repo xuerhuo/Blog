@@ -18,10 +18,10 @@
     </nav>
 </header>
 <div id="content">
+    <div class="wrap">
     <textarea class="information">
 
     </textarea>
-    <div class="wrap">
         <button class="flush-qcloud">更新腾讯云缓存</button>
     </div>
 </div>

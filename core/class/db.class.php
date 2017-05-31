@@ -100,13 +100,18 @@ class db
 
     public static function fetchall($parse)
     {
-        global $G;
+        global $G, $C;
         $parse .= self::$suffix ? self::$suffix : '';
         self::$running = $parse;
         try {
-            $res = self::$pdo->query($parse, \PDO::FETCH_ASSOC);
-            if ($res)
-                $res = $res->fetchall();
+            $res = $C['cache']->get($parse);
+            if (!$res) {
+                $res = self::$pdo->query($parse, \PDO::FETCH_ASSOC);
+                if ($res)
+                    $res = $res->fetchall();
+                $C['cache']->set($parse, $res, 60 * 60 * 30);
+            }
+
         } catch (PDOException $e) {
             echo $e->getMessage();
             die('pdo query error');
