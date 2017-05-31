@@ -4,7 +4,6 @@
 window.onload = function () {
     addEvent(".wrap .title .c-menu a", "click", menuclick);
     addEvent(".wrap #c-menu-addsetting .bottom .post", "click", addSetting);
-
 }
 function menuclick() {
     if (document.querySelector("#c-menu-addsetting").style.display == "none") {

@@ -12,8 +12,8 @@ if ($G['post']['cache-type'] == 'qcloud') {
             array_append($upfiles, $file);
         }
     }
+    $upfiles = check_cache_file($upfiles);
     if ($G['post']['method'] == 'getfile') {
-        $upfiles = check_cache_file($upfiles);
         json_output(array('status' => true, 'data' => $upfiles));
     }
     if ($G['post']['method'] == 'updatefile') {
@@ -59,11 +59,11 @@ if ($G['post']['cache-type'] == 'qcloud') {
     }
 }
 if ($G['get']['param']['debug']) {
-    $storage = new \Cms\common\Storage($conf);
-    $file = '/www/users/HK265413/WEB/test.txt';
-    dump($storage->stat($file));
-    dump(sha1_file($file));
-    dump($storage->delFile($file));
-    dump($storage->upload($file));
+    $cache_hash = $C['cache']->get('file_cache_hash');
+    dump($cache_hash);
+    $upfiles = check_cache_file($upfiles);
+    dump($upfiles);
+    dump(sha1_file('/www/users/HK265413/WEB/tpl/default/static/js/admin_cache_index.js'));
+    dump(sha1_file('/www/users/HK265413/WEB/data/lib/editor/lib/codemirror/mode/http/http.js'));
 }
 ?>

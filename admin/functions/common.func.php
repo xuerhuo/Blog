@@ -43,8 +43,9 @@ if (!function_exists('check_cache_file')) {
             return $filelist;
         }
         foreach ($filelist as $file) {
-            if (sha1($file) != $cache_hash[$file])
+            if (sha1_file($file) != $cache_hash[$file]) {
                 array_append($upfiles, $file);
+            }
         }
         return $upfiles;
     }

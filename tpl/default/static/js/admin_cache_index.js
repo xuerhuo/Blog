@@ -28,6 +28,7 @@ function updateqcloudfile(filelist) {
             displaylog(data.message, data.num, filelist.length);
         }));
     }
+    displaylog("更新完成", x, filelist.length);
 }
 function displaylog(info, now, all) {
     var textarea = document.querySelector(".information");
