@@ -1,6 +1,8 @@
 <?php
 
 namespace Cms\common;
+
+
 class Kiwivm
 {
     private $appid = null;
@@ -9,7 +11,6 @@ class Kiwivm
     private $apiurl = array(
         'restart' => '{site}v1/restart?veid={appid}&api_key={appsecret}'
     );
-
     public function __construct($appid, $appsecret, $site)
     {
         $this->appid = $appid;
