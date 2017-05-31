@@ -17,11 +17,9 @@
         <h2><a href="<?= $G['config']['app']['siteurl'] ?>"><?php echo $G['config']['common']['site_title'] ?></a></h2>
         <p>承载我的青春</p>
         <ul class="nav-menu">
-            <li><a href="<?= $G['config']['app']['siteurl'] ?>">首页</a></li>
-            <li>首页</li>
-            <li>首页</li>
-            <li>首页</li>
-            <li>首页</li>
+            <?php foreach ($index_menu as $menu): ?>
+                <li><a href="<?php echo U($menu['menu_mod']); ?>"><?php echo $menu['menu_name'] ?></a></li>
+            <?php endforeach; ?>
         </ul>
     </div>
     <div id="content">

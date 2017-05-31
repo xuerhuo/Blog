@@ -8,7 +8,7 @@ $G['time']['core']['starttime'] = getmtime();
 define('CORE', dirname(__FILE__) . DIRECTORY_SEPARATOR);
 
 
-error_reporting(7);
+error_reporting(0);
 global $G, $C;
 //$G['debug']['core']['starttime']=getmtime();
 $G['debug']['mem']['core']['startmem'] = memory_get_usage();
