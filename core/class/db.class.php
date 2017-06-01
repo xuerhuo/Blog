@@ -109,7 +109,7 @@ class db
                 $res = self::$pdo->query($parse, \PDO::FETCH_ASSOC);
                 if ($res)
                     $res = $res->fetchall();
-                $C['cache']->set($parse, $res, 60 * 60 * 30);
+                $C['cache']->set($parse, $res);
             }
 
         } catch (PDOException $e) {
