@@ -3,12 +3,11 @@
 namespace Cms\core;
 if (!defined('IN'))
     exit('not in web interface');
+error_reporting(~E_NOTICE);
 date_default_timezone_set('PRC');
 $G['time']['core']['starttime'] = getmtime();
 define('CORE', dirname(__FILE__) . DIRECTORY_SEPARATOR);
 
-
-error_reporting(7);
 global $G, $C;
 //$G['debug']['core']['starttime']=getmtime();
 $G['debug']['mem']['core']['startmem'] = memory_get_usage();
@@ -27,7 +26,7 @@ $C['Route'] = new Route();//路由
 $C['app'] = new app();
 //载入配置
 $G['config']['app'] = $C['app']->loadconf('app');
-
+error_reporting($G['config']['app']['error_level']);
 //数据库
 $G['config']['db'] = $C['app']->loadconf('db');
 $driver->checkurl($G);

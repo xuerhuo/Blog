@@ -53,8 +53,9 @@ class Storage implements StorageInterface
         // TODO: Implement statFolder() method.
     }
 
-    function delFolder()
+    function delFolder($folder)
     {
+        return Cosapi::delFolder($this->bucket, $folder);
         // TODO: Implement delFolder() method.
     }
 

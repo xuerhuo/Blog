@@ -5,7 +5,10 @@ $conf = array(
 );
 if ($G['post']['cache-type'] == 'qcloud') {
     $storage = new \Cms\common\Storage($conf);
-    $files = array_merge(scanpath(WEBROOT . 'tpl/') + scanpath(WEBROOT . 'data/'));
+    array_append($files, scanpath(WEBROOT . 'tpl/'));
+    array_append($files, scanpath(WEBROOT . 'data/lib/'));
+    array_append($files, scanpath(WEBROOT . 'data/file/'));
+    // $files = array_merge(scanpath(WEBROOT . 'tpl/') + scanpath(WEBROOT . 'data/'));
     $upfiles;
     foreach ($files as $key => $file) {
         if (get_extension($file) != 'php') {
@@ -23,7 +26,7 @@ if ($G['post']['cache-type'] == 'qcloud') {
         $file = $G['post']['file'];
         $file_hash = sha1_file($file);
         $stat = $storage->stat($file);
-        $ret['num'] = array_search($file, $upfiles);
+        $ret['path'] = $file;
         if (!file_exists($file) || !in_array($file, $upfiles)) {
             $ret['status'] = false;
             $ret['message'] = "文件不存在";
@@ -57,13 +60,20 @@ if ($G['post']['cache-type'] == 'qcloud') {
         json_output($ret);
         $C['cache']->set('file_cache_hash', $cache_hash, 0);
     }
+} elseif ($G['post']['cache-type'] == "keyvalue") {
+    $delall = false;
+    if ($G['post']['delall'] == "1") {
+        $delall = true;
+    }
+    json_output($C['cache']->clear($delall));
+} elseif ($G['post']['cache-type'] == "template") {
+    $C['Template'] = new \Cms\core\Template();
+    json_output($C['Template']->clear());
 }
 if ($G['get']['param']['debug']) {
-    $cache_hash = $C['cache']->get('file_cache_hash');
-    dump($cache_hash);
-    $upfiles = check_cache_file($upfiles);
-    dump($upfiles);
-    dump(sha1_file('/www/users/HK265413/WEB/tpl/default/static/js/admin_cache_index.js'));
-    dump(sha1_file('/www/users/HK265413/WEB/data/lib/editor/lib/codemirror/mode/http/http.js'));
+    array_append($files, scanpath(WEBROOT . 'tpl/'));
+    array_append($files, scanpath(WEBROOT . 'data/lib/'));
+    array_append($files, scanpath(WEBROOT . 'data/file/'));
+    dump($files);
 }
 ?>

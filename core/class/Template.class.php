@@ -20,22 +20,29 @@ class Template
     private $tpl_pre = 'tpl_';      //生成文件的全路径
     private $reg_exp;
     private $search_replace = array();
+    private $debug;
 
-    public function __construct($tpl, $cache_path = null)
+    public function __construct()
     {
         global $G;
-        $this->tpl_pre .= str_replace('/', '_', str_replace(TPL, '', $tpl));
-        $this->cache_path = $cache_path === null ? $G['config']['app']['tpl_cache_path'] : $cache_path;
-        $this->tpl = $tpl;
-        $this->file_hash = sha1($tpl);
+        $this->debug = $G['config']['app']['debug'];
+        $this->cache_path = $G['config']['app']['tpl_cache_path'];
+
+    }
+
+    public function createTpl($path_to_src)
+    {
+        $this->tpl_pre .= str_replace('/', '_', str_replace(TPL, '', $path_to_src));
+        $this->tpl = $path_to_src;
+        $this->file_hash = sha1($path_to_src);
         $this->cache_file_name = $this->cache_path . $this->tpl_pre;
-        if (!file_exists($this->cache_file_name)) {
+
+        if (!file_exists($this->cache_file_name) || $this->debug) {
             $this->tpl_content = $this->readContent($this->tpl);
             $this->compile($this->tpl_content);
             $this->output();
         }
     }
-
     public function readContent($file_path)
     {
         return file_get_contents($file_path);
@@ -55,7 +62,7 @@ class Template
     public function replaceRule()
     {
         $this->search_replace = array(
-            '<?=' => '<?php echo',
+            '<?=' => '<?php echo ',
             '{/foreach}' => '<?php endforeach;?>',
             '{/if}' => '<?php endif;?>',
         );
@@ -85,5 +92,24 @@ class Template
         $content = $this->readContent($include_file);
         $this->compile($content);
         return $content;
+    }
+
+    public function clear()
+    {
+        $ret['statuc'] = true;
+        $files = scanpath($this->cache_path);
+        foreach ($files as $file) {
+            if (unlink($file)) {
+                $ret['message'] .= 'deleted ' . $file . "\r\n";
+            }
+        }
+        $templates = scanpath(TPL);
+        foreach ($templates as $src) {
+            if (get_extension($src) == 'php') {
+                template($src);
+                $ret['message'] .= 'creat ' . $src . "\r\n";
+            }
+        }
+        return $ret;
     }
 }

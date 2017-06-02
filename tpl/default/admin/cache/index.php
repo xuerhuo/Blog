@@ -23,6 +23,9 @@
 
     </textarea>
         <button class="flush-qcloud">更新腾讯云缓存</button>
+        <button class="flush-keyvalue">更新数据缓存</button>
+        <button class="flush-template">更新模板缓存</button>
+        <button class="flush-Textarea">清除输出内容</button>
     </div>
 </div>
 </body>

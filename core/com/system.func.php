@@ -191,7 +191,8 @@ if (!function_exists('template')) {
     function template($path)
     {
         global $C;
-        $C['Template'] = new \Cms\core\Template($path);
+        $C['Template'] = new \Cms\core\Template();
+        $C['Template']->createTpl($path);
         return $C['Template']->cache_file_name;
     }
 }

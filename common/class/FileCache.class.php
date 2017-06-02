@@ -7,7 +7,7 @@ class FileCache
 
     public function __construct()
     {
-        $this->cachefiledir = WEBROOT . 'data' . DIRECTORY_SEPARATOR . 'cache' . DIRECTORY_SEPARATOR;
+        $this->cachefiledir = WEBROOT . 'data' . DIRECTORY_SEPARATOR . 'cache' . DIRECTORY_SEPARATOR . 'keyvalue' . DIRECTORY_SEPARATOR;
     }
 
     public function set($key, $value, $exp = null)
@@ -54,5 +54,20 @@ class FileCache
         } else {
             return false;
         }
+    }
+
+    public function clear($del_all = false)
+    {
+        $ret = array();
+        $files = scanpath($this->cachefiledir);
+        foreach ($files as $file) {
+            $data = json_decode(file_get_contents($file), 1);
+            if ($data['exp'] != 0 || $del_all) {
+                if (unlink($file))
+                    $ret['message'] .= "delete $file\r\n";
+            }
+        }
+        $ret['status'] = true;
+        return $ret;
     }
 }

@@ -380,7 +380,13 @@ function feed2array($feed, $load = true)
 function array_append(&$array, $data)
 {
     $array = is_array($array) ? $array : (array)$array;
-    array_push($array, $data);
+    if (!is_array($data)) {
+        array_push($array, $data);
+    } else {
+        foreach ($data as $key => $d) {
+            array_push($array, $d);
+        }
+    }
 }
 
 //低版本兼容 函数

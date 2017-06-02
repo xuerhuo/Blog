@@ -23,7 +23,7 @@ interface StorageInterface
 
     function statFolder();
 
-    function delFolder();
+    function delFolder($folder);
 
     function update($filepath);
 
