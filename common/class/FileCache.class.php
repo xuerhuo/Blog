@@ -42,11 +42,6 @@ class FileCache
         $key = sha1($key);
 
         $file = $this->cachefiledir . $key;
-        if ($key == "d0e86de551f673b3298e8b420d8ffacf47eefb4f") {
-            $data = json_decode(file_get_contents($file), 1);
-            dump($data);
-            dump(time() - $data['createtime']);
-        }
         if (file_exists($file)) {
             $data = json_decode(file_get_contents($file), 1);
             if ($data['exp'] == 0) {

@@ -412,4 +412,62 @@ if (!function_exists('array_column')) {
         return $result;
     }
 }
+if (!function_exists('str_format_repalce')) {
+    /**
+     * @param $find
+     * @param $replace
+     * @param $src
+     * @param int $search_start
+     * 感觉自己像一个智障  这个函数白写了  用不着 先放着  万一用上了呢
+     * 功能是查找匹配字符串
+     */
+    function str_format_repalce($find, $replace, $src, $search_start = 0)
+    {
+        global $G;
+        $i = strlen($src);//长度
+        $find_len = strlen($find);
+        $find_point = 0;//查找指针
+        $tempstr = "";
+        $replace_time = substr_count($find, '%');//需要查找不定变量几次
+        $replaced_time = 0;//已经替换多少次
+        for ($j = $search_start; $j < $i; $j++) {//遍历src
+            if ($find[$find_point] != '%') {//固定字符
+                if ($src[$j] == $find[$find_point]) {
+                    $find_point++;
+                    $tempstr .= $src[$j];
+                } else {
+                    $tempstr = "";
+                    $find_point = 0;
+                }
+            } else {
+                if (in_array($src[$j], $G['sec']['format'][$find[$find_point + 1]])) {
+                    $tempstr .= $src[$j];
+                    if (!in_array($src[$j + 1], $G['sec']['format'][$find[$find_point + 1]])) {
+                        $find_point += 2;
+                    }
+                    //预判是否满足
+                    if ($find[$find_point] == '%') {
+                        if (!in_array($src[$j + 1], $G['sec']['format'][$find[$find_point + 1]])) {
+                            $j--;
+                        }
+                    } else {
+                        if ($src[$j + 1] != $find[$find_point]) {
+                            $j--;
+                        }
+                    }
+                } else {
+                    $tempstr = "";
+                    $find_point = 0;
+                }
+            }
+            if ($find_point >= $find_len && $find_point > 0)
+                break;
+        }
+        $new_src = str_replace($tempstr, $replace, $src);
+        if ($new_src != $src) {
+
+        }
+
+    }
+}
 ?>

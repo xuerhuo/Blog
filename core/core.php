@@ -20,6 +20,7 @@ require_once CORE . 'class/init.class.php';
 $driver = new init();
 register_shutdown_function('shutdown_function');//注册调试函数
 $G['sec']['strrep'] = $driver->loadsysconf('sec');
+$G['sec']['format'] = $driver->loadsysconf('format');
 $C['Route'] = new Route();//路由
 //$C['app'] = $driver->loadsysclass('app');
 //初始化底层
@@ -51,7 +52,7 @@ if (file_exists($controller)) {
 
 $G['system']['viewfile'] = $C['app']->initView($G['route']['redirect']['view']);
 if (file_exists($G['system']['viewfile'])) {
-    require_once $G['system']['viewfile'];
+    require_once template($G['system']['viewfile']);
 }
 
 

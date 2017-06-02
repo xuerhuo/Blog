@@ -1,4 +1,4 @@
-<?php include TPL . 'include' . DIRECTORY_SEPARATOR . 'common_header.php' ?>
+{include include/common_header}
     <div id="content">
         <ul class="article_list">
             <?php foreach ($lists as $list): ?>
@@ -35,5 +35,4 @@
         <strong><a style="color: #333333; text-decoration: underline;" href="http://www.inzhuo.cn/">卓的云</a></strong>
         <strong><a style="color: #333333; text-decoration: underline;" href="http://deepon.cn">Deep'blog</a></strong>
     </div>
-
-<?php include TPL . 'include' . DIRECTORY_SEPARATOR . 'common_footer.php' ?>
+{include include/common_footer}

@@ -10,7 +10,7 @@ add_tpl_static(DATA_LIB . 'editor/lib/jquery.flowchart.min.js');
 add_tpl_static(DATA_LIB . 'editor/editormd.js');
 add_tpl_static(DATA_LIB . 'editor/css/editormd.preview.css');
 ?>
-<?php include TPL . 'include' . DIRECTORY_SEPARATOR . 'common_header.php' ?>
+{include include/common_header}
     <div id="content">
         <h3 class="title"><?= $article['title'] ?></h3>
         <div id="article_content">
@@ -46,8 +46,4 @@ add_tpl_static(DATA_LIB . 'editor/css/editormd.preview.css');
         <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=280 height=450
                 src="//music.163.com/outchain/player?type=0&id=118004103&auto=0&height=430"></iframe>
     </div>
-    <div class="cl"></div>
-</div>
-
-</body>
-</html>
+{include include/common_footer}

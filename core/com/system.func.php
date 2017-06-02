@@ -180,4 +180,19 @@ if (!function_exists('add_tpl_static')) {
         }
     }
 }
+if (!function_exists('get_run_file_name')) {
+    function get_run_file_name($filepath)
+    {
+        $file = end(explode(DIRECTORY_SEPARATOR, $filepath));
+        return explode('.', $file);
+    }
+}
+if (!function_exists('template')) {
+    function template($path)
+    {
+        global $C;
+        $C['Template'] = new \Cms\core\Template($path);
+        return $C['Template']->cache_file_name;
+    }
+}
 ?>

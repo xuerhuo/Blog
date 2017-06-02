@@ -7,4 +7,5 @@ $config['allow_upload_type'] = array('jpg', 'jpeg', 'gif', 'bmp', 'psd', 'png', 
 $config['error_level'] = 0;
 $config['cache_enable'] = true;
 $config['file_cache_expire'] = 60 * 30;
+$config['tpl_cache_path'] = ROOT . 'data' . DIRECTORY_SEPARATOR . 'cache' . DIRECTORY_SEPARATOR . 'tpl' . DIRECTORY_SEPARATOR;
 ?>
