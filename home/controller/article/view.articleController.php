@@ -6,4 +6,7 @@ if ($G['get']['param']['ajax'] == 1) {
     json_output($article['content'], 'text');
 }
 $article['content'] = htmlspecialchars($article['content']);
+$title = $article['title'] . ' - ';
+$site_keywords = $article['tags'];
+$site_description = $article['title'];
 ?>

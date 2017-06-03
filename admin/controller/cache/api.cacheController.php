@@ -3,6 +3,7 @@ $conf = array(
     'regin' => 'gz',
     'bucket' => 'erhuoorg'
 );
+$G['config']['app']['cache_enable'] = true;
 if ($G['post']['cache-type'] == 'qcloud') {
     $storage = new \Cms\common\Storage($conf);
     array_append($files, scanpath(WEBROOT . 'tpl/'));
