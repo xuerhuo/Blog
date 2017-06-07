@@ -14,9 +14,11 @@ header("X-Powered-By:Erhuo.org");
 
 if (!empty($G['get']['param']['ajax'])) {
     display('json_output.php');
-
 }
 $C['cache'] = new \Cms\common\FileCache();
 $G['config']['common'] = M('Cms\admin\setting')->getConfig();
+if ($G['config']['app']['debug'] == true) {
+    $G['config']['common']['basehref'] = $G['config']['app']['siteurl'];
+}
 
 ?>

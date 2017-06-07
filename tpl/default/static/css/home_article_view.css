@@ -104,6 +104,25 @@ body {
     float: right;
 }
 
+#content #comment .comment-list li {
+    list-style: none;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #eeeeee;
+}
+
+#content #comment .comment-list p {
+    display: inline-block;
+}
+
+#content #comment .comment-list .comment_name {
+    width: 35%;
+}
+
+#content #comment .comment-list .comment_content {
+    margin-top: 15px;
+    margin-bottom: 10px;
+    display: block;
+}
 #content #comment form {
     width: 100%;
 }

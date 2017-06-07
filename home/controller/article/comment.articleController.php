@@ -1,7 +1,7 @@
 <?php
 if (!empty($G['post'])) {
     if ($G['post']['method'] == "add") {
-        $status = T('common_comments')->add(array(
+        $status = T('comments')->add(array(
             'type' => 'article',
             'index_id' => addslashes($G['post']['id']),
             'comment_name' => strfiter($G['post']['comment_name'], 'html,sqlinjection'),

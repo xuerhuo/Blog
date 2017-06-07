@@ -19,6 +19,7 @@ function postcoment(e) {
         "id": id
     });
     post(url + "/ajax/1", param, commentcallback);
+
 }
 function commentcallback() {
     if (xmlhttp.readyState == 4) {

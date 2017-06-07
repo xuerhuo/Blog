@@ -55,10 +55,11 @@ function strfiter($dataf, $methodf)
                 break;
         }
     }
-
+    // dump($data);
     if ($data != $dataf) {
-        $data = strfiter($data, $methodf);
+        $data = strfiter($data, str_replace('html', '', $methodf));
     }
+
     return $data;
 }
 

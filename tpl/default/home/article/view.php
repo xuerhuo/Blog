@@ -32,13 +32,20 @@ add_tpl_static(DATA_LIB . 'editor/css/editormd.preview.css');
         </div>
         <div id="comment">
             <ul class="comment-list">
-                <li class="comment-item"></li>
+                <li><h4>评论列表</h4></li>
+                {foreach $comments $comment}
+                <li class="comment-item">
+                    <p class="comment_name">{$comment['comment_name']}</p>
+                    <p class="comment_time"> 发表时间:{date('Y-m-d H:i:s',$comment['dateline'])}</p>
+                    <p class="comment_content">{$comment['comment_content']}</p>
+                </li>
+                {/foreach}
             </ul>
-            <form action="<?php echo U('home/article/comment'); ?>" method="post">
+            <form action="<?php echo U('home/article/comment'); ?>" method="post" onsubmit="return">
                 <input type="text" name="coment_name" id="comment_name" placeholder="姓名">
                 <input type="hidden" name="id" id="article_id" value="<?php echo $G['get']['param']['aid']; ?>">
                 <textarea name="coment_content" id="comment_content" required></textarea>
-                <button class="btn" type="submit">提交</button>
+                <button class="btn" type="button">提交</button>
             </form>
         </div>
     </div>
