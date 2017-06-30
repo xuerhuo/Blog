@@ -6,6 +6,8 @@ class Route
     public $dfm;
     public $param;
     public $pathinfo;
+    private $route_conf = 'route';
+    private $route = array();
 
     public function __invoke()
     {
@@ -15,6 +17,12 @@ class Route
     public function __construct()
     {
         global $G;
+        if (file_exists(ROOT . 'data/' . $this->route_conf . '.conf.php')) {
+            require_once ROOT . 'data/' . $this->route_conf . '.conf.php';
+        }
+        $this->route = $config;
+
+
         $this->pathinfo = $this->getPathInfo();
         $this->getArray();
         $this->bindMvc();
@@ -25,22 +33,45 @@ class Route
 
     private function getPathInfo()
     {
+        $result = '';
         global $G;
         if ($G['pathinfo']) {
-            return $G['pathinfo'];
+            $result = $G['pathinfo'];
         }
         if ($G['get']['p']) {
-            return $G['get']['p'];
+            $result = $G['get']['p'];
         } else {
-            return $G['pathinfo'];
+            $result = $G['pathinfo'];
         }
+        $result = ltrim($result, '/');
+        $result = $this->match($result);
+        if (stripos($result, 'ajax/1') > 1) {
+            $result = $this->match(ltrim(str_replace('/ajax/1', '', $result), '/'));
+            $result .= '/ajax/1';
+        }
+        return $result;
+    }
+
+    public function match($path, $direction = 1, $config = null)
+    {
+        if ($config == null) {
+            $config = $this->route;
+        }
+        if ($direction = 1) {
+            foreach ($config as $key => $conf) {
+                if ($path == $key) {
+                    $path = $conf;
+                };
+            }
+        }
+
+        return $path;
     }
 
     //出队列
 
     private function getArray()
     {
-        $this->pathinfo = ltrim($this->pathinfo, '/');
         $this->pathinfo = array_filter(explode('/', $this->pathinfo));
     }
 

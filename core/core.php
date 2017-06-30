@@ -29,6 +29,9 @@ $G['config']['app'] = $C['app']->loadconf('app');
 error_reporting($G['config']['app']['error_level']);
 //数据库
 $G['config']['db'] = $C['app']->loadconf('db');
+
+//自定义路由
+$G['config']['route'] = $C['app']->loadconf('route');
 $driver->checkurl($G);
 // $driver->loadsysclass('db');
 db::init($G['config']['db']);
