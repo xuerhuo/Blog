@@ -26,7 +26,7 @@
         <strong><a style="color: #333333; text-decoration: underline;" href="http://www.jurieo.com">俊霖’blog</a>
         </strong> <strong><a style="color: #333333; text-decoration: underline;"
                              href="http://www.yangbin.cc">杨彬’blog</a> </strong>
-        <strong><a style="color: #333333; text-decoration: underline;" href="http://dongdong.name/">东东博客</a> </strong>
+        <strong><a style="color: #333333; text-decoration: underline;" title="http://dongdong.name/">东东博客</a> </strong>
         </strong>
         <strong><a style="color: #333333; text-decoration: underline;" href="http://www.w0ai1uo.org">w0ai1ou'blog</a>
         </strong>

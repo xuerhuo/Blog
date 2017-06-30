@@ -1,7 +1,6 @@
 <div class="cl"></div>
 
 
-</div>
 <div class="foooter">
     <div class="tj">
         <script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");
@@ -9,5 +8,8 @@
     </div>
 
 </div>
+
+</div>
+
 </body>
 </html>

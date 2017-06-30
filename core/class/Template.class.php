@@ -68,6 +68,7 @@ class Template
         );
         $this->reg_exp = array(
             '/\{\\$([a-zA-Z_\x7f-\xff][a-zA-Z0-9_\x7f-\xff\[\]\'\"\$->]*)\}/' => '<?php echo $\1;?>',//$value $value[123] $value['123'] $value[$kdf] $this->df
+            '/\{([A-Z_][A-Z0-9_]*)\}/' => '<?php echo \1;?>',//常量DATA_LIB
             '/{foreach ([a-zA-Z-_0-9\$>\(\)]*) ([a-zA-Z-_0-9\$>\(\)]*)}/' => "<?php foreach((array)\\1 as \\2):?>",
             '/{foreach ([a-zA-Z-_0-9\$>\(\)]*) ([a-zA-Z-_0-9\$>\(\)]*) ([a-zA-Z-_0-9\$>\(\)]*)}/' => "<?php foreach((array)\\1 as \\2=>\\3):?>",
             '/{([a-zA-Z_][a-zA-Z_-]*\(.*\))}/' => '<?php echo \\1?>',//匹配输出函数
