@@ -121,6 +121,7 @@ class Route
 
     public function initParam()
     {
+        $tmp = $_GET;
         $count = count($this->param);
         for ($i = 1; $i <= $count; $i += 2) {
             if (isset($this->param[$i])) {
