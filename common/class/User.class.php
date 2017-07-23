@@ -8,6 +8,7 @@ class User
     public $session;
     public $nickname;
     public $user;
+    public $sid;
 
     //   public $adminid;
     public function __construct()
@@ -31,6 +32,28 @@ class User
         }
     }
 
+    public function loginbyopenid($openid)
+    {
+        $statud = $this->user = T('members')->find(array('openid' => $openid));
+        if ($statud) {
+            return $this->loginByUid($this->user['id']);
+        }
+    }
+
+    public function loginByUid($uid)
+    {
+        $this->uid = $uid;
+        $_SESSION['uid'] = $this->uid;
+        $this->user = T('members')->find(array('id' => $this->uid));
+        $this->generateSid();
+    }
+
+    private function generateSid()
+    {
+        $sid = sha1(uniqid());
+        T('members')->update(array('id' => $this->uid), array('sid' => $sid));
+        $this->sid = $sid;
+    }
     public function modifypass($oldpassword, $newpassword)
     {
         $ret = array(
@@ -44,6 +67,18 @@ class User
             ));
         }
         return $ret;
+    }
+
+    public function register($userinfo)
+    {
+        $data['username'] = $userinfo['username'];
+        $data['nickname'] = $userinfo['nickname'];
+        $data['password'] = $userinfo['password'];
+        $data['adminid'] = $userinfo['adminid'];
+        $data['groupid'] = $userinfo['groupid'];
+        $data['loginip'] = $userinfo['loginip'];
+        $data['openid'] = $userinfo['openid'];
+        return T('members')->add($data);
     }
 }
 
