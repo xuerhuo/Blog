@@ -1,10 +1,11 @@
 <html>
 <head>
     <base href="<?php echo $G['config']['common']['basehref'] ?>">
-    {static_import('reset.css')}
-    {static_import('admin_base.css')}
-    {static_import('common.js')}
-    {static_import('admin_menu_curdedit.css')}
+    <?= import('reset.css') ?>
+    <?= import('admin_base.css') ?>
+    <?= import('common.js') ?>
+    <?php echo import('admin_menu_curdedit.css') ?>
+
     <script type="text/javascript" charset="utf-8"
             src="<?php echo DATA_LIB . 'ueditor/' ?>ueditor.config.js"></script>
     <script type="text/javascript" charset="utf-8"
@@ -36,7 +37,7 @@
         </div>
         <div class="c-ment-content" id="c-menu-content">
             <form action="" method="post" enctype="multipart/form-data">
-                <input name="id" value="<?php echo I('get.id') ?>" type="hidden">
+                <input name="id" value="<?php echo $G['get']['param']['id'] ?>" type="hidden">
                 <?php foreach ($settings as $key => $set): ?>
                     <div class="row_my">
                         <div class="lable">
@@ -44,45 +45,48 @@
                         </div>
                         <div class="fill-elemt">
                             <?php if ($set['option_type'] == 'text'): ?>
-                            <input name="<?php echo $set['field']; ?>" type="text"
-                                   value="<?php echo $data[$set['field']] ?>">
+                                <input name="<?php echo $set['field']; ?>" type="text"
+                                       value="<?php echo $data[$set['field']] ?>">
                             <?php elseif ($set['option_type'] == 'file'): ?>
-                            <input name="<?php echo $set['field']; ?>" type="file"
-                                   value="<?php echo $data[$set['field']] ?>">
+                                <input name="<?php echo $set['field']; ?>" type="file"
+                                       value="<?php echo $data[$set['field']] ?>">
                             <?php elseif ($set['option_type'] == 'img'): ?>
-                            <input name="<?php echo $set['field']; ?>" type="file"
-                                   value="<?php echo $data[$set['field']] ?>">
+                                <input name="<?php echo $set['field']; ?>" type="file"
+                                       value="<?php echo $data[$set['field']] ?>">
+
                             <?php elseif ($set['option_type'] == 'fulltext'): ?>
                                 <textarea
                                         name="<?php echo $set['field']; ?>"><?php echo $data[$set['field']] ?></textarea>
                             <?php elseif ($set['option_type'] == 'select'): ?>
-                            <?php
-                            $json = json_decode($set['value'],1);
-                            $options = M($json['table'])->select();
-                            ?>
+                                <?php
+                                $json = json_decode($set['value'],1);
+                                $json['index_field'] = $json['index_field'] ? $json['index_field']:'id';
+                                $options = T($json['table'])->select();
+                                ?>
                                 <select name="{$set['field']}">
-                                    <option value=""></option>
+                                    <option value="0">请选择</option>
                                     {foreach $options $opt}
-                                    <option value="{$opt['id']}">{$opt[$json['field']]}</option>
+                                    <option value="{$opt[$json['index_field']]}">{$opt[$json['field']]}</option>
                                     {/foreach}
                                 </select>
+
+
+
                             <?php elseif ($set['option_type'] == 'html'): ?>
+
                                 <script id="editor{$set['field']}" type="text/plain"
                                         name="<?php echo $set['field']; ?>"><?php echo $data[$set['field']] ?></script>
                                 <script type="text/javascript">
-
                                     //实例化编辑器
                                     //建议使用工厂方法getEditor创建和引用编辑器实例，如果在某个闭包下引用该编辑器，直接调用UE.getEditor('editor')就能拿到相关的实例
                                     var ue = UE.getEditor('editor{$set['field']}');
                                 </script>
-
                             <?php elseif ($set['option_type'] == 'time'): ?>
-                                <?php echo date('Y-m-d H:i:s', $data[$set['field']]) ?>
+                                <?php echo date('Y-m-d H:i:s',$data[$set['field']])?>
                             <?php else:?>
                             <input name="<?php echo $set['field']; ?>" type="text"
                                    value="<?php echo $data[$set['field']] ?>">
                             <?php endif;?>
-
 
                         </div>
                     </div>
