@@ -512,8 +512,8 @@ if(!function_exists('page_interface')){
             if ($previous) {
                 $param[$pageGet] = $previous;
                 $pageStr = $pageStr . '<a href="' . U('', $param) . '">' . '上一页' . '</a>';
-                $pageStr = $pageStr . '<a href="#">' . $p . '</a>/' . $last;
             }
+            $pageStr = $pageStr . '<a href="#">' . $p . '</a>/' . $last;
             if ($next) {
                 $param[$pageGet] = $next;
                 $pageStr = $pageStr . '<a href="' . U('', $param) . '">' . '下一页' . '</a>';
