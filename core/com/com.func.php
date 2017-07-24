@@ -475,4 +475,56 @@ if (!function_exists('str_format_repalce')) {
 
     }
 }
+
+
+if(!function_exists('page_interface')){
+    /**
+     * @param $count 数据总条数
+     * @param $nowPage 当前页数
+     * @param $pageSize 每页数量
+     * @return string 前端显示html
+     */
+    function page_interface($count, $nowPage, $pageSize){
+        $param = I('get.');
+        $pageGet = 'p';
+        $listNum = $count;
+        $pageNum = ceil($listNum / $pageSize);//计算得出总页数
+        $p = (int)$nowPage;
+        if ($p < 1)
+            $p = 1;
+        if ($p > $pageNum)
+            $p = $pageNum;
+
+
+        $first = 1;
+        $last = $pageNum;
+        if ($p < $pageNum)
+            $next = $p + 1;
+        if ($p > 1) {
+            $previous = $p - 1;
+        }
+
+        if ($pageNum > 1) {
+            if ($p > 2) {
+                $param[$pageGet] = 1;
+                $pageStr = $pageStr . '<a href="' . U('', $param) . '">首页</a>';
+            }
+            if ($previous) {
+                $param[$pageGet] = $previous;
+                $pageStr = $pageStr . '<a href="' . U('', $param) . '">' . '上一页' . '</a>';
+                $pageStr = $pageStr . '<a href="#">' . $p . '</a>/' . $last;
+            }
+            if ($next) {
+                $param[$pageGet] = $next;
+                $pageStr = $pageStr . '<a href="' . U('', $param) . '">' . '下一页' . '</a>';
+            }
+            if ($p < $pageNum - 1) {
+                $param[$pageGet] = $pageNum;
+                $pageStr = $pageStr . '<a href="' . url('', $param) . '">末页</a>';
+            }
+        }
+        return $pageStr;
+
+    }
+}
 ?>
