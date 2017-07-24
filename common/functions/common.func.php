@@ -31,4 +31,42 @@
 //        return $data;
 //    }
 //}
+if (!function_exists('function_output')) {
+    function function_output($type, $data)
+    {
+        switch ($type) {
+            case 'html':
+                $result = mb_substr(strip_tags($data), 0, 50);
+                break;
+            case 'select':
+                break;
+            case 'uid':
+                $result = 'uid' . $data;
+                break;
+            default:
+                $result = 'error type :' . $type;
+        }
+        if (strpos($type, '.') > 0) {
+            $ret = explode('.', $type);
+            $res = T($ret[0])->find(array($ret[1] => $data));
+            $result = $res[$ret[2]];
+        }
+        return $result;
+    }
+}
+if (!function_exists('get_table_value')) {
+    function get_table_value($table, $field, $value)
+    {
+        return M($table)->where(array($field => $value))->find();
+
+    }
+}
+if (!function_exists('get_common_setting')) {
+    function get_common_setting($set_guid)
+    {
+        $result = get_table_value('common_setting', 'set_guid', $set_guid);
+        return $result['value'];
+
+    }
+}
 ?>

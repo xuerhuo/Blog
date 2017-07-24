@@ -24,7 +24,6 @@ function url($arrayRpair = null, $arrayUrl = null)
 
 function page(&$arrayRes, $pageSize, $pageGet = 'p')
 {
-    /*转载请注明出处http://erhuo.org/?p=1316*/
 
 
     $listNum = count($arrayRes);

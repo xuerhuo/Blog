@@ -5,6 +5,7 @@
     <?= import('admin_base.css') ?>
     <?= import('admin_menu_curdlist.css') ?>
     <?= import('jquery-2.1.0.js') ?>
+    <?= import('common.js') ?>
     <?= import('admin_menu_curdlist.js') ?>
 </head>
 <body>
@@ -43,9 +44,23 @@
                         <?php if ($set['option_type'] == 'file'): ?>
                             <img class="showimg" src="
                     <?php echo DATA_FILE . $dat[$set['field']] ?>"/>
-                        <? else: ?>
-                            <?php echo mb_substr(strip_tags($dat[$set['field']]), 0, 20, 'utf-8') ?>
-                        <? endif; ?>
+                        <?php elseif ($set['option_type'] == 'time'): ?>
+                            <?php echo date('Y-m-d H:i', $dat[$set['field']]) ?>
+                        <?php elseif ($set['option_type'] == 'img'): ?>
+                            <img class="showimg" src="
+                        <?php echo DATA_FILE . $dat[$set['field']] ?>"/>
+                        <?php elseif ($set['option_type'] == 'text' || $set['option_type'] == 'fulltext'): ?>
+                            <?php echo mb_substr(strip_tags($dat[$set['field']]), 0, 18, 'UTF-8') ?>
+                        <?php elseif ($set['option_type'] == 'select'): ?>
+                            <?php
+                            $json = json_decode($set['value'], 1);
+                            $json['index_field'] = $json['index_field'] ? $json['index_field'] : 'id';
+                            $out = $json['table'] . '.' . $json['index_field'] . '.' . $json['field'];
+                            ?>
+                            <?php echo function_output($out, $dat[$set['field']]) ?>
+                        <?php else: ?>
+                            <?php echo function_output($set['option_type'], $dat[$set['field']]); ?><!--如果不知道类型，传给函数处理-->
+                        <?php endif; ?>
                     </td>
                 <?php endforeach; ?>
                 <td><a href="<?php echo U('admin/menu/curdedit', array(
