@@ -41,7 +41,7 @@
                             <?php endif; ?>
                             <?php if ($set['option_type'] == 'file'): ?>
                                 <input name="<?php echo $set['set_guid']; ?>" type="file"
-                                       value="<?php echo $set['value'] ?>">
+                                       value="<?php echo $set['value'] ?>"><?php echo $set['value']?'已选择,点击更改':''?>
                             <?php endif; ?>
                             <?php if ($set['option_type'] == 'fulltext'): ?>
                                 <textarea name="<?php echo $set['set_guid']; ?>"><?php echo $set['value'] ?></textarea>
