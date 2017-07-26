@@ -15,7 +15,9 @@
     list-style: none;
     line-height: 100%;
 }
-
+.header li .name{
+    margin-top: 10px;
+}
 .header a, p {
     display: inline-block;
 }

@@ -29,7 +29,7 @@
                 <label for="group_name">用户组名:</label>
                 <input type="text" name="group_name">
             </div>
-            <div class="row_my">
+            <div class="row_my" style="display: none;">
                 <label for="cat_parent">上级用户组:</label>
                 <select name="parent_group">
                     <option value="0" selected></option>

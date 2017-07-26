@@ -15,7 +15,7 @@
 <div class="header">
     <ul>
         <li class="pull-right">
-            <div class="">
+            <div class="name">
                 <p>hello <?= $C['Admin']->nickname ?></p>
                 <a href="<?= U('admin/index/logout') ?>" class="">退出</a>
         </li>

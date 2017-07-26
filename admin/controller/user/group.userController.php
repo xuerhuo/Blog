@@ -8,19 +8,19 @@
 
 if ($G['post']) {
     if ($G['post']['id'] == 0) {
-        $status = T('group')->add(array_filteri($G['post'], array('group_name', 'parent_group')));
+        $status = T('group')->add(array_filteri($G['post'], array('group_name')));
         if ($status) {
             msg('添加成功', 'admin/user/group');
         }
     } else {
-        $status = T('group')->update(array_filteri($G['post'], 'id'), array_filteri($G['post'], array('group_name', 'parent_group')));
+        $status = T('group')->update(array_filteri($G['post'], 'id'), array_filteri($G['post'], array('group_name')));
         if ($status) {
             msg('修改成功', 'admin/user/group');
         }
     }
 }
 if ($G['get']['param']['delete']) {
-    $status = T('usergroup_relation')->find(array('group_id' => $G['get']['param']['delete']));
+    $status = T('group_user')->find(array('group_id' => $G['get']['param']['delete']));
     if ($status) {
         msg('用户组中还有用户,请先转移用户', 'admin/user/group');
     } else {

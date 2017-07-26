@@ -50,15 +50,14 @@ class menuModel extends \Cms\core\Model
             $now_menu = T('menus')->find($arr);
         }
         if ($now_menu) {
-            array_append($ret, $now_menu);
+            $ret[] = $now_menu;
             if ($now_menu['parent_id'] > 0) {
-                $this->getMenuName(array('id' => $now_menu['parent_id']), $ret);
+                $parent = $this->getMenuName(array('id' => $now_menu['parent_id']), $ret);
             } else {
 
                 // return $now_menu;
             }
         }
-
         return $ret;
     }
 }
