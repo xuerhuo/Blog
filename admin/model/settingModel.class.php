@@ -14,12 +14,15 @@ class settingModel extends \Cms\core\Model
         return $data;
     }
 
-    public function getCurdCellByAlias($alias)
+    public function getCurdCellByAlias($alias, $display = null)
     {
-
-        $settings = T('common_setting')->select(array(
+        $where = array(
             'menu_alias' => $alias
-        ));
+        );
+        if ($display != null) {
+            $where['listdisplay'] = $display;
+        }
+        $settings = T('common_setting')->select($where);
         return $settings;
     }
 
