@@ -46,6 +46,16 @@
     padding: 10px 0;
 }
 
+.wrap .row_my .upload-btn {
+    background-color: #4B8DF8;
+    color: #ffffff;
+    padding: 5px 20px;
+    border: none;
+    margin-right: 10px;
+    display: inline-block;
+    margin-left: 5px;
+    cursor: hand;
+}
 .wrap .c-ment-content .row_my .lable {
     display: inline-block;
     width: 15%;
@@ -102,4 +112,8 @@
 
 .wrap .bottom .sub button span {
     margin-right: 12px;
+}
+
+#ueditor {
+    display: none;
 }

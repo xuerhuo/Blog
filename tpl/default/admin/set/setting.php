@@ -6,6 +6,12 @@
     <?= import('common.js') ?>
     <?php echo import('admin_set_setting.css') ?>
     <?php echo import('admin_set_setting.js') ?>
+    <script type="text/javascript" charset="utf-8"
+            src="<?php echo DATA_LIB . 'ueditor/' ?>ueditor.config.js"></script>
+    <script type="text/javascript" charset="utf-8"
+            src="<?php echo DATA_LIB . 'ueditor/' ?>ueditor.all.min.js"></script>
+    <script type="text/javascript" charset="utf-8"
+            src="<?php echo DATA_LIB . 'ueditor/' ?>lang/zh-cn/zh-cn.js"></script>
 </head>
 <body>
 <header>
@@ -40,8 +46,10 @@
                                        value="<?php echo htmlspecialchars($set['value']); ?>">
                             <?php endif; ?>
                             <?php if ($set['option_type'] == 'file'): ?>
-                                <input name="<?php echo $set['set_guid']; ?>" type="file"
-                                       value="<?php echo $set['value'] ?>"><?php echo $set['value']?'已选择,点击更改':''?>
+                                <input name="<?php echo $set['set_guid']; ?>" type="text"
+                                       value="<?php echo $set['value'] ?>" readonly
+                                       onclick="window.open('{$G['config']['app']['siteurl']}'+this.value);return false;">
+                                <div class="upload-btn" onclick="openuploadframe('{$set['set_guid']}')">点击上传</div>
                             <?php endif; ?>
                             <?php if ($set['option_type'] == 'fulltext'): ?>
                                 <textarea name="<?php echo $set['set_guid']; ?>"><?php echo $set['value'] ?></textarea>
@@ -51,14 +59,6 @@
                         </div>
                     </div>
                 <?php endforeach; ?>
-                <!--            <div class="row_my">-->
-                <!--                <div class="lable">-->
-                <!--                    站点名称:-->
-                <!--                </div>-->
-                <!--                <div class="fill-elemt">-->
-                <!--                    <input name="" type="text">-->
-                <!--                </div>-->
-                <!--            </div>-->
                 <div class="bottom">
                     <div class="sub">
                         <button class="set-post">提交</button>
@@ -137,5 +137,8 @@
         </div>
     </div>
 </div>
+<textarea id="ueditor">
+
+</textarea>
 </body>
 </html>
