@@ -15,16 +15,18 @@ if (!empty($G['post'])) {
             }
         }
     }
-
     if ($G['post']['id']) {
         $data = array_filteri($G['post'], array_column($settings, 'field'));
         if ($G['post']['id']) {
+            dump($G['post']);
             foreach ((array)$settings as $key => $set) {
+                // if($_FILES[$set['field']]&&!$G['post'][$set['field']]){//解决当无文件上传  没有时图片被置空
+                //    continue;
+                //}
                 $ret = T($set['data_table'])->update(
                     array('id' => $G['post']['id']),
                     array($set['field'] => addslashes($G['post'][$set['field']]))
                 );
-                dump($ret);
             }
         }
 
@@ -33,9 +35,9 @@ if (!empty($G['post'])) {
 
         $data = array_filteri($G['post'], array_column($settings, 'field'));
 
-        dump(T($settings[0]['data_table'])->add(
+        T($settings[0]['data_table'])->add(
             $data
-        ));
+        );
 
         msg("添加成功", 'admin/menu/curdlist');
     }

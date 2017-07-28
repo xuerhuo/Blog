@@ -5,13 +5,12 @@
     <?= import('admin_base.css') ?>
     <?= import('common.js') ?>
     <?php echo import('admin_menu_curdedit.css') ?>
+    <?php echo import('admin_menu_curdedit.js') ?>
 
     <script type="text/javascript" charset="utf-8"
             src="<?php echo DATA_LIB . 'ueditor/' ?>ueditor.config.js"></script>
     <script type="text/javascript" charset="utf-8"
             src="<?php echo DATA_LIB . 'ueditor/' ?>ueditor.all.min.js"></script>
-    <!--建议手动加在语言，避免在ie下有时因为加载语言失败导致编辑器加载失败-->
-    <!--这里加载的语言文件会覆盖你在配置项目里添加的语言类型，比如你在配置项目里配置的是英文，这里加载的中文，那最后就是中文-->
     <script type="text/javascript" charset="utf-8"
             src="<?php echo DATA_LIB . 'ueditor/' ?>lang/zh-cn/zh-cn.js"></script>
 </head>
@@ -47,46 +46,49 @@
                             <?php if ($set['option_type'] == 'text'): ?>
                                 <input name="<?php echo $set['field']; ?>" type="text"
                                        value="<?php echo $data[$set['field']] ?>">
-                            <?php elseif ($set['option_type'] == 'file'): ?>
+                            <?php endif; ?>
+                            <?php if ($set['option_type'] == 'file'): ?>
                                 <input name="<?php echo $set['field']; ?>" type="file"
                                        value="<?php echo $data[$set['field']] ?>">
-                            <?php elseif ($set['option_type'] == 'img'): ?>
-                                <input name="<?php echo $set['field']; ?>" type="file"
-                                       value="<?php echo $data[$set['field']] ?>">
+                            <?php endif; ?>
+                            <?php if ($set['option_type'] == 'img'): ?>
+                                <input name="<?php echo $set['field']; ?>" type="text"
+                                       value="<?php echo $data[$set['field']] ?>" readonly
+                                       onclick="window.open('{$G['config']['app']['siteurl']}'+this.value);return false;">
+                                <div class="upload-btn" onclick="openuploadframe('<?php echo $set['field']; ?>')">点击上传
+                                </div>
+                            <?php endif; ?>
 
-                            <?php elseif ($set['option_type'] == 'fulltext'): ?>
+                            <?php if ($set['option_type'] == 'fulltext'): ?>
                                 <textarea
                                         name="<?php echo $set['field']; ?>"><?php echo $data[$set['field']] ?></textarea>
-                            <?php elseif ($set['option_type'] == 'select'): ?>
+                            <?php endif; ?>
+
+                            <?php if ($set['option_type'] == 'select'): ?>
                                 <?php
                                 $json = json_decode($set['value'],1);
                                 $json['index_field'] = $json['index_field'] ? $json['index_field']:'id';
-                                $options = T($json['table'])->select();
+                                $options = T($json['table'])->select($json['where']);
                                 ?>
                                 <select name="{$set['field']}">
-                                    <option value="0">请选择</option>
                                     {foreach $options $opt}
                                     <option value="{$opt[$json['index_field']]}">{$opt[$json['field']]}</option>
                                     {/foreach}
                                 </select>
+                            <?php endif; ?>
 
 
 
-                            <?php elseif ($set['option_type'] == 'html'): ?>
+                            <?php if ($set['option_type'] == 'html'): ?>
 
                                 <script id="editor{$set['field']}" type="text/plain"
                                         name="<?php echo $set['field']; ?>"><?php echo $data[$set['field']] ?></script>
                                 <script type="text/javascript">
-                                    //实例化编辑器
-                                    //建议使用工厂方法getEditor创建和引用编辑器实例，如果在某个闭包下引用该编辑器，直接调用UE.getEditor('editor')就能拿到相关的实例
                                     var ue = UE.getEditor('editor{$set['field']}');
                                 </script>
-                            <?php elseif ($set['option_type'] == 'time'): ?>
-                                <?php echo date('Y-m-d H:i:s',$data[$set['field']])?>
-                            <?php else:?>
-                            <input name="<?php echo $set['field']; ?>" type="text"
-                                   value="<?php echo $data[$set['field']] ?>">
-                            <?php endif;?>
+
+                            <?php endif; ?>
+
 
                         </div>
                     </div>
@@ -103,5 +105,8 @@
 
     </div>
 </div>
+<textarea id="ueditor">
+
+</textarea>
 </body>
 </html>
