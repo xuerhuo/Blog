@@ -59,9 +59,7 @@ class Route
         }
         if ($direction = 1) {
             foreach ($config as $key => $conf) {
-                if ($path == $key) {
-                    $path = $conf;
-                };
+                $path = preg_replace($key,$conf,$path);
             }
         }
 

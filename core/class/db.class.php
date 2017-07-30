@@ -32,7 +32,7 @@ class db
         self::$running = $parse;
         self::$lastsql = $parse;
         try {
-            $res = self::$pdo->query($parse);
+            $res = self::$pdo->query(str_replace('{pre}',self::$pre,$parse));
             if ($res)
                 $res = $res->fetchall();
         } catch (PDOException $e) {
@@ -102,6 +102,7 @@ class db
     {
         global $G, $C;
         $parse .= self::$suffix ? self::$suffix : '';
+        $parse = str_replace('{pre}',self::$pre,$parse);
         self::$running = $parse;
         try {
             $res = $C['cache']->get($parse);

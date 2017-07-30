@@ -57,7 +57,7 @@ if (!function_exists('function_output')) {
 if (!function_exists('get_table_value')) {
     function get_table_value($table, $field, $value)
     {
-        return M($table)->where(array($field => $value))->find();
+        return T($table)->find(array($field => $value));
 
     }
 }
@@ -67,6 +67,16 @@ if (!function_exists('get_common_setting')) {
         $result = get_table_value('common_setting', 'set_guid', $set_guid);
         return $result['value'];
 
+    }
+}
+if(!function_exists('curd_data_fiter')){
+    function curd_data_fiter($alias){
+        switch ($alias){
+            case 'series':
+                break;
+            default:$result = M('Cms\admin\setting')->getCurdCellByAlias($alias,1);
+        }
+        return $result;
     }
 }
 ?>

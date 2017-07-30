@@ -61,7 +61,9 @@ function U($string = null, $array = null)
     if (is_array($array)) {
         $tmp = array();
         foreach ($array as $key => $value) {
-            array_append($tmp, $key);
+            if(!is_numeric($key)) {
+                array_append($tmp, $key);
+            }
             array_append($tmp, $value);
         }
         $array = $tmp;

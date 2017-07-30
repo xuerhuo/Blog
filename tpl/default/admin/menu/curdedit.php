@@ -48,16 +48,17 @@
                                        value="<?php echo $data[$set['field']] ?>">
                             <?php endif; ?>
                             <?php if ($set['option_type'] == 'file'): ?>
-                                <input name="<?php echo $set['field']; ?>" type="file"
-                                       value="<?php echo $data[$set['field']] ?>">
+                                <input name="<?php echo $set['field']; ?>" type="text"
+                                       value="<?php echo $data[$set['field']] ?>" readonly onclick="window.open('{$G['config']['app']['siteurl']}'+this.value);return false;"> <div class="upload-btn" onclick="openuploadframe('<?php echo $set['field']; ?>','img')">点击上传</div>
                             <?php endif; ?>
                             <?php if ($set['option_type'] == 'img'): ?>
                                 <input name="<?php echo $set['field']; ?>" type="text"
-                                       value="<?php echo $data[$set['field']] ?>" readonly
-                                       onclick="window.open('{$G['config']['app']['siteurl']}'+this.value);return false;">
-                                <div class="upload-btn" onclick="openuploadframe('<?php echo $set['field']; ?>')">点击上传
-                                </div>
+                                       value="<?php echo $data[$set['field']] ?>" readonly onclick="window.open('{$G['config']['app']['siteurl']}'+this.value);return false;"> <div class="upload-btn" onclick="openuploadframe('<?php echo $set['field']; ?>','img')">点击上传</div>
                             <?php endif; ?>
+                            <?php if ($set['option_type'] == 'imgs'): ?>
+                                <textarea name="<?php echo $set['field']; ?>" type="text" readonly> <?php echo $data[$set['field']] ?></textarea><div class="upload-btn" onclick="openuploadframe('<?php echo $set['field']; ?>','imgs')">点击上传</div>
+                            <?php endif; ?>
+
 
                             <?php if ($set['option_type'] == 'fulltext'): ?>
                                 <textarea
@@ -68,11 +69,15 @@
                                 <?php
                                 $json = json_decode($set['value'],1);
                                 $json['index_field'] = $json['index_field'] ? $json['index_field']:'id';
-                                $options = T($json['table'])->select($json['where']);
+                                if($json['where']&&!is_array($json['where'])){
+                                    $options = \Cms\core\db::query($json['where']);
+                                }else {
+                                    $options = T($json['table'])->select($json['where']);
+                                }
                                 ?>
                                 <select name="{$set['field']}">
                                     {foreach $options $opt}
-                                    <option value="{$opt[$json['index_field']]}">{$opt[$json['field']]}</option>
+                                    <option value="{$opt[$json['index_field']]}" <?php if($data[$set['field']]==$opt[$json['index_field']]):?>selected<?php endif;?>>{$opt[$json['field']]}</option>
                                     {/foreach}
                                 </select>
                             <?php endif; ?>
