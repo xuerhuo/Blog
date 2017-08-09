@@ -104,7 +104,6 @@
             }
 
             if(list) {
-                editor.fireEvent('beforeinsertimage', list);
                 editor.execCommand('insertimage', list);
                 remote && editor.fireEvent("catchRemoteImage");
             }
