@@ -79,4 +79,9 @@ if(!function_exists('curd_data_fiter')){
         return $result;
     }
 }
+if(!function_exists('get_thumb')){
+    function get_thumb($src){
+        return U('home/index/thubm',array('path'=>base64_encode($src)));
+    }
+}
 ?>
