@@ -6,4 +6,6 @@
  * Time: 10:26
  */
 $path = ROOT.base64_decode($G['get']['param']['path']);
-$temp = new \Cms\common\imgcompress($path,0.1);
+$per = $G['get']['param']['percent'];
+$per = $per ? $per : 0.5;
+$temp = new \Cms\common\imgcompress($path,$per);

@@ -80,8 +80,8 @@ if(!function_exists('curd_data_fiter')){
     }
 }
 if(!function_exists('get_thumb')){
-    function get_thumb($src){
-        return U('home/index/thumb',array('path'=>base64_encode($src)));
+    function get_thumb($src,$percent=0.1){
+        return U('home/index/thumb',array('path'=>base64_encode($src),'percent'=>$percent));
     }
 }
 ?>
