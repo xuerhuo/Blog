@@ -28,7 +28,7 @@
 }
 
 #content #article_content #markdown {
-    display: none;
+    #display: none;
 }
 #content #article_content .content_des {
     padding: 30px 0;

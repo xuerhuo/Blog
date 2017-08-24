@@ -1,5 +1,6 @@
 <?php
 add_tpl_static('jquery-2.1.0.js');
+add_tpl_static('marked.js');
 add_tpl_static(DATA_LIB . 'editor/lib/marked.min.js');
 add_tpl_static(DATA_LIB . 'editor/lib/prettify.min.js');
 add_tpl_static(DATA_LIB . 'editor/lib/raphael.min.js');

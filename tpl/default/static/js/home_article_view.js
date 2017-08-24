@@ -43,7 +43,6 @@ function articlemarkdown() {
 
     var testEditormdView, testEditormdView2;
     var markdown = document.querySelector("#article_content #markdown").innerHTML;
-    document.querySelector("#article_content #markdown").style.display = "none";
     //a(markdown);
     // function a(markdown) {
     //    alert(markdown);
@@ -51,7 +50,21 @@ function articlemarkdown() {
     post(getRequest() + "ajax/1", null, function () {
         if (xmlhttp.readyState == 4) {
             markdown = xmlhttp.responseText;
-            editormd.markdownToHTML("markdown-view", {
+
+            var rendererMD = new marked.Renderer();
+            marked.setOptions({
+                renderer: rendererMD,
+                gfm: true,
+                tables: true,
+                breaks: false,
+                pedantic: false,
+                sanitize: false,
+                smartLists: true,
+                smartypants: false
+            });//基本设置
+            document.querySelector('#markdown-view').innerHTML = marked(markdown);
+
+         /*   editormd.markdownToHTML("markdown-view", {
                 markdown: markdown,//+ "\r\n" + $("#append-test").text(),
                 htmlDecode: true,       // 开启 HTML 标签解析，为了安全性，默认不开启
                 //htmlDecode      : "style,script,iframe",  // you can filter tags decode
@@ -67,7 +80,8 @@ function articlemarkdown() {
                 flowChart: true,  // 默认不解析
                 sequenceDiagram: true,  // 默认不解析
 
-            });
+            });*/
+            document.querySelector("#article_content #markdown").style.display = "none";
         }
     });
     //alert(markdown);
