@@ -1,15 +1,16 @@
 <?php
 add_tpl_static('jquery-2.1.0.js');
 add_tpl_static('marked.js');
-add_tpl_static(DATA_LIB . 'editor/lib/marked.min.js');
-add_tpl_static(DATA_LIB . 'editor/lib/prettify.min.js');
-add_tpl_static(DATA_LIB . 'editor/lib/raphael.min.js');
-add_tpl_static(DATA_LIB . 'editor/lib/underscore.min.js');
-add_tpl_static(DATA_LIB . 'editor/lib/sequence-diagram.min.js');
-add_tpl_static(DATA_LIB . 'editor/lib/flowchart.min.js');
-add_tpl_static(DATA_LIB . 'editor/lib/jquery.flowchart.min.js');
-add_tpl_static(DATA_LIB . 'editor/editormd.js');
-add_tpl_static(DATA_LIB . 'editor/css/editormd.preview.css');
+add_tpl_static('github_markdown.css');
+//add_tpl_static(DATA_LIB . 'editor/lib/marked.min.js');
+//add_tpl_static(DATA_LIB . 'editor/lib/prettify.min.js');
+//add_tpl_static(DATA_LIB . 'editor/lib/raphael.min.js');
+//add_tpl_static(DATA_LIB . 'editor/lib/underscore.min.js');
+//add_tpl_static(DATA_LIB . 'editor/lib/sequence-diagram.min.js');
+//add_tpl_static(DATA_LIB . 'editor/lib/flowchart.min.js');
+//add_tpl_static(DATA_LIB . 'editor/lib/jquery.flowchart.min.js');
+//add_tpl_static(DATA_LIB . 'editor/editormd.js');
+//add_tpl_static(DATA_LIB . 'editor/css/editormd.preview.css');
 ?>
 {include include/common_header}
     <div id="content">
