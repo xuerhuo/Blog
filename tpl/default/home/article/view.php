@@ -17,7 +17,7 @@ add_tpl_static('github_markdown.css');
         <h3 class="title"><?= $article['title'] ?></h3>
         <div id="article_content">
             <pre id="markdown"><?= $article['content'] ?></pre>
-            <pre id="markdown-view"></pre>
+            <pre id="markdown-view" class="markdown-body"></pre>
             <p class="content_des">本条目发表于<?= date('Y', $article['dateline']) ?>年<?= date('m', $article['dateline']) ?>
                 月<?= date('d', $article['dateline']) ?>日。属于<b><?= $article['cat_name'] ?></b>分类</p>
         </div>

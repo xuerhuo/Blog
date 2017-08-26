@@ -32,6 +32,8 @@ $G['config']['db'] = $C['app']->loadconf('db');
 
 //自定义路由
 $G['config']['route'] = $C['app']->loadconf('route');
+//url路由反向解析
+$G['config']['pre_route'] = $C['app']->loadconf('pre_route');
 $driver->checkurl($G);
 // $driver->loadsysclass('db');
 db::init($G['config']['db']);

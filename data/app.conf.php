@@ -11,6 +11,7 @@ $config['error_level'] = 7;
 $config['cache_enable'] = true;
 $config['file_cache_expire'] = 60 * 30;
 $config['tpl_cache_path'] = ROOT . 'data' . DIRECTORY_SEPARATOR . 'cache' . DIRECTORY_SEPARATOR . 'tpl' . DIRECTORY_SEPARATOR;
-
+$config['static_url'] = true;//是否开启url html后缀
+$config['static_url_suffix'] = '.shtml';//开启url 后的url后缀
 $config['qcloud_cos_config'] = array('regin' => 'gz', 'bucket' => 'erhuoorg');
 ?>

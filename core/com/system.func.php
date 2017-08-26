@@ -56,7 +56,7 @@ function display($parse)
 
 function U($string = null, $array = null)
 {
-    global $G;
+    global $G,$C;
     $mvc = explode('/', $string);
     if (is_array($array)) {
         $tmp = array();
@@ -70,9 +70,22 @@ function U($string = null, $array = null)
     }
     $url = array_merge($mvc, (array)$array);
     $url = implode('/', $url);
+
+    //反向解析url
+    $url = $C['Route']->match($url,1,$G['config']['pre_route']);
+        //伪静态
+    if($G['config']['app']['static_url']){
+        $url.= $G['config']['app']['static_url_suffix'];
+    }
     return $G['config']['app']['siteurl'] . $url;
 }
 
+/**
+ * 反向解析伪静态 主要用于生成url的时候
+ */
+function pre_route(){
+    global $G;
+}
 function direct($string, $array = null)
 {
     global $G;

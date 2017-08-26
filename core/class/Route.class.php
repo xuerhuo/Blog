@@ -38,6 +38,11 @@ class Route
         if ($G['pathinfo']) {
             $result = $G['pathinfo'];
         }
+        if($G['config']['app']['static_url']){
+            $result = str_replace($G['config']['app']['static_url_suffix'],'',$result);
+        }
+
+
         if ($G['get']['p']) {
             $result = $G['get']['p'];
         } else {
