@@ -17,11 +17,10 @@ class Route
     public function __construct()
     {
         global $G;
-        if (file_exists(ROOT . 'data/' . $this->route_conf . '.conf.php')) {
-            require_once ROOT . 'data/' . $this->route_conf . '.conf.php';
-        }
-        $this->route = $config;
-
+//        if (file_exists(ROOT . 'data/' . $this->route_conf . '.conf.php')) {
+//            require_once ROOT . 'data/' . $this->route_conf . '.conf.php';
+//        }
+        $this->route = $G['config']['route'];
 
         $this->pathinfo = $this->getPathInfo();
         $this->getArray();
@@ -38,16 +37,18 @@ class Route
         if ($G['pathinfo']) {
             $result = $G['pathinfo'];
         }
-        if($G['config']['app']['static_url']){
-            $result = str_replace($G['config']['app']['static_url_suffix'],'',$result);
-        }
-
 
         if ($G['get']['p']) {
             $result = $G['get']['p'];
         } else {
             $result = $G['pathinfo'];
         }
+
+        if($G['config']['app']['static_url']){
+            $result = str_replace($G['config']['app']['static_url_suffix'],'',$result);
+        }
+
+
         $result = ltrim($result, '/');
         $result = $this->match($result);
         if (stripos($result, 'ajax/1') > 1) {
@@ -96,7 +97,6 @@ class Route
         } else {
             $this->dfm['f'] = 'index';
         }
-
         if (is_file(ROOT . $this->dfm['d'] . DIRECTORY_SEPARATOR . 'controller' . DIRECTORY_SEPARATOR . $this->dfm['f'] . DIRECTORY_SEPARATOR . $this->pathinfo[0] . '.' . $this->dfm['f'] . 'Controller.php')) {
             $this->dfm['m'] = $this->pathinfo[0];
             $this->dequeue($this->pathinfo);

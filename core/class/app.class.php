@@ -30,7 +30,7 @@ class app
         session_start();
     }
 
-    public function loadconf($parse)
+    public static function loadconf($parse)
     {
         if (file_exists(ROOT . 'data/' . $parse . '.conf.php')) {
             require_once ROOT . 'data/' . $parse . '.conf.php';

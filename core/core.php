@@ -15,28 +15,39 @@ $G['get'] = $_GET;
 $G['post'] = $_POST;
 $G['pathinfo'] = $_SERVER['PATH_INFO'];
 require_once CORE . 'class/init.class.php';
-//底层
+//底层函数 autoload等支持
 $driver = new init();
 register_shutdown_function('shutdown_function');//注册调试函数
 $G['sec']['strrep'] = $driver->loadsysconf('sec');
 $G['sec']['format'] = $driver->loadsysconf('format');
+
+//自定义路由
+$G['config']['route'] = app::loadconf('route');
+//url路由反向解析
+$G['config']['pre_route'] = app::loadconf('pre_route');
+$G['config']['app'] = app::loadconf('app');
+
+
 $C['Route'] = new Route();//路由
 //$C['app'] = $driver->loadsysclass('app');
-//初始化底层
+
+
+//初始化应用底层
 $C['app'] = new app();
 //载入配置
-$G['config']['app'] = $C['app']->loadconf('app');
+
 error_reporting($G['config']['app']['error_level']);
 //数据库
 $G['config']['db'] = $C['app']->loadconf('db');
 
-//自定义路由
-$G['config']['route'] = $C['app']->loadconf('route');
-//url路由反向解析
-$G['config']['pre_route'] = $C['app']->loadconf('pre_route');
+
+
 $driver->checkurl($G);
 // $driver->loadsysclass('db');
 db::init($G['config']['db']);
+
+
+
 
 //初始化基础环境
 if (file_exists(ROOT . 'common' . DIRECTORY_SEPARATOR . 'init.php'))
