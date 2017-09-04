@@ -7,9 +7,9 @@ window.onload = function () {
 function openuploadframe(name,type) {
     inputName=name;
     uploadType=type;
-    if(type.indexOf("img")) {
+    if(type.indexOf("img")>-1) {
         _editor.getDialog("insertimage").open();
-    }else if(type.indexOf("file")){
+    }else if(type.indexOf("file")>-1){
         _editor.getDialog("attachment").open();
     }
 }
