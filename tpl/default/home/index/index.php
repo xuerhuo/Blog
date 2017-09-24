@@ -33,6 +33,6 @@
         <strong><a style="color: #333333; text-decoration: underline;" href="http://www.sakill.com">SAKILL的博客</a>
         </strong>
         <strong><a style="color: #333333; text-decoration: underline;" href="http://www.inzhuo.cn/">卓的云</a></strong>
-        <strong><a style="color: #333333; text-decoration: underline;" href="http://deepon.cn">Deep'blog</a></strong>
+        <strong><a style="color: #333333; text-decoration: underline;" title="http://deepon.cn">Deep'blog</a></strong>
     </div>
 {include include/common_footer}

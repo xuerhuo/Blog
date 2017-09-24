@@ -1,4 +1,5 @@
 <?php
+header('Access-Control-Allow-Origin:*');
 if (!empty($G['post'])) {
     if ($G['post']['method'] == "add") {
         $status = T('comments')->add(array(
