@@ -1,13 +1,13 @@
 <html>
 <head>
     <base href="<?php echo $G['config']['common']['basehref'] ?>">
-    <?= import('reset.css') ?>
-    <?= import('admin_base.css') ?>
-    <?= import('jquery.min.js') ?>
-    <?= import('bootstrap.css') ?>
-    <?= import('bootstrap.min.js') ?>
-    <?= import('admin_article_cat.js') ?>
-    <?= import('admin_article_cat.css') ?>
+    <?php echo import('reset.css') ?>
+    <?php echo import('admin_base.css') ?>
+    <?php echo import('jquery.min.js') ?>
+    <?php echo import('bootstrap.css') ?>
+    <?php echo import('bootstrap.min.js') ?>
+    <?php echo import('admin_article_cat.js') ?>
+    <?php echo import('admin_article_cat.css') ?>
 </head>
 <body>
 <header>
@@ -16,7 +16,7 @@
         <p>分类管理</p>
     </div>
     <nav>
-        <a href="<?= U('admin/index/main') ?>">主页</a>><a>内容管理</a>><a href="<?= U('admin/article/index') ?>">分类管理</a>
+        <a href="<?php echo U('admin/index/main') ?>">主页</a>><a>内容管理</a>><a href="<?php echo U('admin/article/index') ?>">分类管理</a>
     </nav>
 </header>
 <div class="wrap">
@@ -33,8 +33,8 @@
                 <select name="parent_cat">
                     <option value="0" selected></option>
                     <?php foreach ($cats as $cat): ?>
-                        <option value="<?= $cat['cat_id'] ?>"><?= $cat['cat_name'] ?></option>
-                    <? endforeach; ?>
+                        <option value="<?php echo $cat['cat_id'] ?>"><?php echo $cat['cat_name'] ?></option>
+                    <?php endforeach; ?>
                 </select>
             </div>
             <div class="bottom">
@@ -57,12 +57,12 @@
             </li>
             <?php foreach ($cats as $cat): ?>
                 <li>
-                    <span class="item"><?= $cat['cat_id'] ?></span>
-                    <span class="cat_name"><?= $cat['cat_name'] ?></span>
-                    <span class="parent_id"><?= $cat['parent_name'] ?></span>
-                    <span class="edit"><a href="#" onclick="cat_edit(this)" id="cat_<?= $cat['cat_id'] ?>"
+                    <span class="item"><?php echo $cat['cat_id'] ?></span>
+                    <span class="cat_name"><?php echo $cat['cat_name'] ?></span>
+                    <span class="parent_id"><?php echo $cat['parent_name'] ?></span>
+                    <span class="edit"><a href="#" onclick="cat_edit(this)" id="cat_<?php echo $cat['cat_id'] ?>"
                                           class="">编辑</a>  <a
-                                href="<?= U('admin/article/cat_delete/' . $cat['cat_id']) ?>">删除</a> </span>
+                                href="<?php echo U('admin/article/cat_delete/' . $cat['cat_id']) ?>">删除</a> </span>
                 </li>
             <?php endforeach; ?>
         </ul>

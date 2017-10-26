@@ -91,7 +91,8 @@ class app
             return $this->tplpath;
             //require_once $this->tplpath;
         } else {
-            // die($this->tplpath.' not found');
+
+//             die($this->tplpath.' not found');
         }
     }
 

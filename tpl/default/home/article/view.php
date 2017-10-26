@@ -14,23 +14,23 @@ add_tpl_static('github_markdown.css');
 ?>
 {include include/common_header}
     <div id="content">
-        <h3 class="title"><?= $article['title'] ?></h3>
+        <h3 class="title"><?php echo $article['title'] ?></h3>
         <div id="article_content">
-            <pre id="markdown"><?= $article['content'] ?></pre>
+            <pre id="markdown"><?php echo $article['content'] ?></pre>
             <pre id="markdown-view" class="markdown-body"></pre>
-            <p class="content_des">本条目发表于<?= date('Y', $article['dateline']) ?>年<?= date('m', $article['dateline']) ?>
-                月<?= date('d', $article['dateline']) ?>日。属于<b><?= $article['cat_name'] ?></b>分类</p>
+            <p class="content_des">本条目发表于<?php echo date('Y', $article['dateline']) ?>年<?php echo date('m', $article['dateline']) ?>
+                月<?php echo date('d', $article['dateline']) ?>日。属于<b><?php echo $article['cat_name'] ?></b>分类</p>
         </div>
         <div class="around-article">
-            <? if (!empty($aaroundarticle[0])): ?>
+            <?php if (!empty($aaroundarticle[0])): ?>
                 <a class="pre"
-                   href="<?= U('home/article/view', array('aid' => $aaroundarticle[0]['id'])) ?>">←<?= $aaroundarticle[0]['title'] ?></a>
-            <? endif; ?>
-            <? if (!empty($aaroundarticle[1])): ?>
+                   href="<?php echo U('home/article/view', array('aid' => $aaroundarticle[0]['id'])) ?>">←<?php echo $aaroundarticle[0]['title'] ?></a>
+            <?php endif; ?>
+            <?php if (!empty($aaroundarticle[1])): ?>
                 <a class="next"
-                   href="<?= U('home/article/view', array('aid' => $aaroundarticle[1]['id'])) ?>"><?= $aaroundarticle[1]['title'] ?>
+                   href="<?php echo U('home/article/view', array('aid' => $aaroundarticle[1]['id'])) ?>"><?php echo $aaroundarticle[1]['title'] ?>
                     →</a>
-            <? endif; ?>
+            <?php endif; ?>
         </div>
         <div id="comment">
             <ul class="comment-list">

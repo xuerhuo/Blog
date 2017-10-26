@@ -62,6 +62,7 @@ $controller = $C['app']->initController();
 if (file_exists($controller)) {
     require_once $controller;
 } else {
+    dfile_put_content($C['app']->controllerpath,"<?php\r\n");
     msg('找不到对应的controller文件', 'home/index/index');
 }
 

@@ -12,6 +12,7 @@ if (!empty($G['post'])) {
         json_output(array(
             'status' => $status,
         ));
+        defatle_sendmail('你有新的消息',$G['post']['comment_content']);
     }
 } else {
     msg('没收收到数据');

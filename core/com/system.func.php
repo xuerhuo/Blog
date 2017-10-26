@@ -30,6 +30,8 @@ function __autoload($classname)
     }
     if (file_exists(ROOT . 'common' . DIRECTORY_SEPARATOR . 'class' . DIRECTORY_SEPARATOR . 'table' . DIRECTORY_SEPARATOR . $classname . '.php')) {
         require_once ROOT . 'common' . DIRECTORY_SEPARATOR . 'class' . DIRECTORY_SEPARATOR . 'table' . DIRECTORY_SEPARATOR . $classname . '.php';
+    }elseif (file_exists(ROOT . 'common' . DIRECTORY_SEPARATOR . 'model' . DIRECTORY_SEPARATOR . $classname . 'Model.class.php')){
+        require_once ROOT . 'common' . DIRECTORY_SEPARATOR . 'model' . DIRECTORY_SEPARATOR . $classname . 'Model.class.php';
     } elseif (file_exists(ROOT . $directory . DIRECTORY_SEPARATOR . 'class' . DIRECTORY_SEPARATOR . $classname . '.class.php')) {
         require_once ROOT . $directory . DIRECTORY_SEPARATOR . 'class' . DIRECTORY_SEPARATOR . $classname . '.class.php';
     } elseif (file_exists(ROOT . $G['get']['d'] . DIRECTORY_SEPARATOR . 'class' . DIRECTORY_SEPARATOR . $classname . '.class.php')) {

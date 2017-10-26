@@ -4,14 +4,14 @@
             <?php foreach ($lists as $list): ?>
                 <li>
                     <h3 class="title"><a
-                                href="<?= U('home/article/view', array('aid' => $list['id'])) ?>"> <?= $list['title'] ?></a>
+                                href="<?php echo U('home/article/view', array('aid' => $list['id'])) ?>"> <?php echo $list['title'] ?></a>
                     </h3>
                     <p class="article_content">
-                        <?= $list['content_sumary'] ?>
+                        <?php echo $list['content_sumary'] ?>
                     </p>
-                    <a href="<?= U('home/article/view', array('aid' => $list['id'])) ?>" class="read_all">阅读全文</a>
-                    <p class="article_des">本文章发布于<?= date('Y', $list['dateline']); ?>
-                        年<?= date('m', $list['dateline']); ?>月<?= date('d', $list['dateline']); ?>日 分类:未分类</p>
+                    <a href="<?php echo U('home/article/view', array('aid' => $list['id'])) ?>" class="read_all">阅读全文</a>
+                    <p class="article_des">本文章发布于<?php echo date('Y', $list['dateline']); ?>
+                        年<?php echo date('m', $list['dateline']); ?>月<?php echo date('d', $list['dateline']); ?>日 分类:未分类</p>
                 </li>
             <?php endforeach; ?>
         </ul>

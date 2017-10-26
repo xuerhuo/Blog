@@ -203,4 +203,25 @@ if(!function_exists('send_mail')){
 
     }
 }
+function defatle_sendmail($title,$msg){
+    global $G;
+    $mailist = explode(',',$G['config']['common']['send_mail']);
+    foreach ($mailist as $mailto){
+        send_mail($mailto,$title,$msg);
+    }
+}
+if(!function_exists('mk_dirs')){
+    function mk_dirs($dir, $mode = 0755)
+    {
+        if (is_dir($dir) || @mkdir($dir,$mode)) return true;
+        if (!mk_dirs(dirname($dir),$mode)) return false;
+        return @mkdir($dir,$mode);
+    }
+}
+if(!function_exists('dfile_put_content')){
+    function dfile_put_content($path,$content){
+        mk_dirs(dirname($path));
+        file_put_contents($path,$content);
+    }
+}
 ?>

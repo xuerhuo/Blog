@@ -41,7 +41,7 @@ $index_menu = M('\Cms\admin\menu')->getMenuByType('index_menu');
     <?php echo import('common.js') ?>
     <?php foreach ($G['tpl']['static'] as $static) : ?>
         <?php echo import($static) ?>
-    <? endforeach; ?>
+    <?php endforeach; ?>
 </head>
 <body>
 <div id="wrap">
